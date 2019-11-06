@@ -1,11 +1,10 @@
 package br.com.casa.programador.services;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
+import br.com.casa.programador.models.InscritoTema;
 import br.com.casa.programador.models.Pessoa;
 
-@Repository
-public interface PessoaRepository extends CrudRepository<Pessoa, Integer>{
-	
+public interface InscritoTemaRepository extends CrudRepository<InscritoTema, Integer>{
+
 }

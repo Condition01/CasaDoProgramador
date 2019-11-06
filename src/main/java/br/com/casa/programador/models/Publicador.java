@@ -2,9 +2,12 @@ package br.com.casa.programador.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "tbl_publicador")
 public class Publicador extends Pessoa{
 	

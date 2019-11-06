@@ -31,4 +31,12 @@ public class TesteController {
 		publicadorRepository.save(p);
 		return "index";
 	}
+	
+	@RequestMapping("/listar")
+	public String listPublicadores(Model model) {
+		Iterable<Publicador> listaPublicadores;
+		listaPublicadores = publicadorRepository.findAll();
+		model.addAttribute("publicadores", listaPublicadores);
+		return "listar";
+	}
 }

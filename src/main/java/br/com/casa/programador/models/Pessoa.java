@@ -1,5 +1,6 @@
 package br.com.casa.programador.models;
 import br.com.casa.programador.enums.StatusPessoa;
+import br.com.casa.programador.enums.TipoPessoa;
 
 import java.util.Date;
 
@@ -42,6 +43,10 @@ public class Pessoa {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "pes_status")
 	private StatusPessoa Status;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "pes_tipo")
+	private TipoPessoa tPessoa;
 
 	public int getId() {
 		return id;
@@ -99,4 +104,12 @@ public class Pessoa {
 		Status = status;
 	}
 
+	public TipoPessoa gettPessoa() {
+		return tPessoa;
+	}
+
+	public void settPessoa(TipoPessoa tPessoa) {
+		this.tPessoa = tPessoa;
+	}
+	
 }
