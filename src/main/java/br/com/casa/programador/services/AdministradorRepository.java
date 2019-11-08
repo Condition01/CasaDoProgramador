@@ -1,9 +1,9 @@
 package br.com.casa.programador.services;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.casa.programador.models.Administrador;
+import br.com.casa.programador.models.users.Administrador;
 
-public interface AdministradorRepository extends CrudRepository<Administrador, Integer>{
+public interface AdministradorRepository extends JpaRepository<Administrador, Integer>{
 
 }

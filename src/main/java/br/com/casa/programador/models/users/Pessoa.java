@@ -1,4 +1,4 @@
-package br.com.casa.programador.models;
+package br.com.casa.programador.models.users;
 import br.com.casa.programador.enums.StatusPessoa;
 import br.com.casa.programador.enums.TipoPessoa;
 

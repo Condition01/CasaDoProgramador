@@ -1,4 +1,4 @@
-package br.com.casa.programador.models;
+package br.com.casa.programador.models.users;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
