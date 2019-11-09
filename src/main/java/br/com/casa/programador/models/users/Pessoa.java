@@ -1,4 +1,5 @@
 package br.com.casa.programador.models.users;
+
 import br.com.casa.programador.enums.StatusPessoa;
 import br.com.casa.programador.enums.TipoPessoa;
 
@@ -24,26 +25,29 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "pes_pessoa")
 	private int id;
-	
+
 	@Column(name = "pes_nome")
 	private String nome;
-	
+
 	@Column(name = "pes_datanasc")
 	private Date datanasc;
-	
+
 	@Column(name = "pes_sexo")
 	private String sexo;
-	
+
 	@Column(name = "pes_cpf")
 	private String cpf;
-	
+
 	@Column(name = "pes_email")
 	private String email;
-	
+
+	@Column(name = "pes_senha")
+	private String senha;
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "pes_status")
 	private StatusPessoa Status;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "pes_tipo")
 	private TipoPessoa tPessoa;
@@ -111,5 +115,13 @@ public class Pessoa {
 	public void settPessoa(TipoPessoa tPessoa) {
 		this.tPessoa = tPessoa;
 	}
-	
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 }

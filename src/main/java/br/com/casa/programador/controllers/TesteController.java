@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.casa.programador.enums.StatusPessoa;
+import br.com.casa.programador.enums.TipoPessoa;
 import br.com.casa.programador.models.Tema;
 import br.com.casa.programador.models.users.Inscrito;
 import br.com.casa.programador.models.users.Publicador;
@@ -37,10 +38,12 @@ public class TesteController {
 		Publicador p = new Publicador();
 		p.setNome("Everson Cardoso");
 		p.setDatanasc(new Date());
-		p.setEmail("evbc@gmail.com");
+		p.setEmail("everson@everson.com");
 		p.setnPublicacoes(15);
 		p.setSexo("Homem");
+		p.setSenha("123");
 		p.setStatus(StatusPessoa.ATIVADO);
+		p.settPessoa(TipoPessoa.PUBLICADOR);
 		p.setCpf("456456465");
 		model.addAttribute("publicador", p);
 		publicadorRepository.save(p);
