@@ -22,16 +22,16 @@ import br.com.casa.programador.services.TemaRepository;
 @Controller
 @RequestMapping("/teste")
 public class TesteController {
-	
+
 	@Autowired
 	TemaRepository temaRepository;
-	
+
 	@Autowired
 	InscritoRepository inscritoRepository;
-	
+
 	@Autowired
 	PublicadorRepository publicadorRepository;
-	
+
 	@RequestMapping("/adicionar")
 	public String adicionar(Model model) {
 		Publicador p = new Publicador();
@@ -46,7 +46,7 @@ public class TesteController {
 		publicadorRepository.save(p);
 		return "index";
 	}
-	
+
 	@RequestMapping("/listar")
 	public String listPublicadores(Model model) {
 		Iterable<Publicador> listaPublicadores;
@@ -54,11 +54,11 @@ public class TesteController {
 		model.addAttribute("publicadores", listaPublicadores);
 		return "listar";
 	}
-	
+
 	@RequestMapping(value = "/adicionarTema", method = RequestMethod.GET)
 	public ModelAndView inserirTemaInscrito() {
 		ModelAndView mv = new ModelAndView("mostraInscrito");
-		
+
 		Inscrito insc = new Inscrito();
 		insc.setId(3);
 		insc.setNome("Everson Cardoso");
@@ -68,26 +68,36 @@ public class TesteController {
 		insc.setNickname("Carlão25cm");
 		insc.setStatus(StatusPessoa.ATIVADO);
 		insc.setCpf("456456465");
-		
+
 		Tema t = new Tema();
 		t.setTema("PIROCA");
 		t.adicionarInscrito(insc);
-		
+
 		Tema t2 = new Tema();
 		t.setTema("BUCETA");
 		t2.adicionarInscrito(insc);
-		
+
 		List<Tema> temaLista = new ArrayList<>();
 		temaLista.add(t);
 		temaLista.add(t2);
-		
+
 		insc.setListaTemas(temaLista);
-		
+
 		inscritoRepository.save(insc);
-		
+
 		mv.addObject("inscrito", insc);
-		
+
 		return mv;
-		
+
+	}
+
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
+	
+	@RequestMapping(value = "/cadastro")
+	public String cadastro() {
+		return "cadastro";
 	}
 }
