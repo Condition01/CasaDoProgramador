@@ -70,11 +70,11 @@ public class TesteController {
 		insc.setCpf("456456465");
 
 		Tema t = new Tema();
-		t.setTema("PIROCA");
+		t.setTema("oi");
 		t.adicionarInscrito(insc);
 
 		Tema t2 = new Tema();
-		t.setTema("BUCETA");
+		t.setTema("oi");
 		t2.adicionarInscrito(insc);
 
 		List<Tema> temaLista = new ArrayList<>();
