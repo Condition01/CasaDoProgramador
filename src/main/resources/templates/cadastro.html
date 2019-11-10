@@ -19,53 +19,80 @@
 			<article class="card-body mx-auto" style="max-width: 400px;">
 				<h4 class="card-title mt-3 text-center">Cria sua conta
 					gratuitamente!</h4>
-				<form>
+				<form action="#" th:action="@{/inscrito/cadastrar}"
+					th:object="${inscrito}" method="post">
+
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-user"></i>
 							</span>
 						</div>
-						<input name="" class="form-control" placeholder="Nome Completo"
-							type="text">
+						<input name="nome" class="form-control"
+							placeholder="Nome completo" type="text" th:field="*{nome}">
+						<span th:if="${#fields.hasErrors('nome')}"
+							th:errors="*{nome}" class="text-danger"></span>
 					</div>
+
 					<!-- form-group// -->
+
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-envelope"></i>
 							</span>
 						</div>
 						<input name="" class="form-control"
-							placeholder="Data de nascimento" type="date">
+							placeholder="Endereço de email" type="email" th:field="*{email}">
 					</div>
+
 					<!-- form-group// -->
+
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-calendar"
+								aria-hidden="true"></i>
+							</span>
+						</div>
+						<input name="" class="form-control"
+							placeholder="Data de nascimento" type="date" th:name="data">
+					</div>
+
+					<!-- form-group// -->
+
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-phone"></i>
 							</span>
 						</div>
 						<select class="custom-select" style="max-width: 120px;">
-							<option selected="">Escolha seu sexo!</option>
+							<option selected="">Sexo</option>
 							<option value="1">Masculino</option>
 							<option value="2">Feminino</option>
 						</select>
 					</div>
+
 					<!-- form-group// -->
+
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-envelope"></i>
+							<span class="input-group-text"> <i
+								class="fa fa-address-card" aria-hidden="true"></i>
 							</span>
 						</div>
-						<input name="" class="form-control"
-							placeholder="Endereço de email" type="email">
+						<input name="" class="form-control" placeholder="CPF" type="text"
+							th:field="*{cpf}">
 					</div>
-					<!-- form-group// -->
+
+					<!-- form-group end.// -->
+
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-envelope"></i>
-							</span>
+							<span class="input-group-text"> <i class="fa fa-asterisk"
+								aria-hidden="true"></i>
 						</div>
-						<input name="" class="form-control" placeholder="CPF" type="cpf">
+						<input name="" class="form-control" placeholder="Nickname"
+							type="text" th:field="*{nickname}">
 					</div>
+
 					<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
@@ -73,8 +100,9 @@
 							</span>
 						</div>
 						<input class="form-control" placeholder="Insira sua senha"
-							type="password">
+							type="password" name="senha">
 					</div>
+
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
@@ -82,9 +110,14 @@
 							</span>
 						</div>
 						<input class="form-control" placeholder="Repita sua senha"
-							type="password">
+							type="password" name="validaSenha">
 					</div>
+
 					<!-- form-group// -->
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary text-center">Registrar-se!</button>
+					</div>
+					<br>
 					<p class="text-center">
 						Já tem uma conta? <a href="./login">Logue aqui!</a>
 					</p>

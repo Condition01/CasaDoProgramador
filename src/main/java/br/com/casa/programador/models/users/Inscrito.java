@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import br.com.casa.programador.models.Tema;
 
@@ -17,6 +20,9 @@ import br.com.casa.programador.models.Tema;
 @Table(name = "tbl_inscrito")
 public class Inscrito extends Pessoa{
 	
+	@NotEmpty(message = "Este campo deve ser preenchido")
+	@NotNull(message = "Este campo deve ser preenchido")
+	@Size(min = 5, max = 20, message = "Não deve exceder mais que 20 caracteres!")
 	@Column(name = "ins_nickname")
 	private String nickname;
 	

@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -26,6 +29,9 @@ public class Pessoa {
 	@Column(name = "pes_pessoa")
 	private int id;
 
+	@NotEmpty(message = "Este campo deve ser preenchido")
+	@NotNull(message = "Este campo deve ser preenchido")
+	@Size(max = 70, message = "Não deve exceder mais que 70 caracteres!")
 	@Column(name = "pes_nome")
 	private String nome;
 
@@ -35,12 +41,20 @@ public class Pessoa {
 	@Column(name = "pes_sexo")
 	private String sexo;
 
+	@NotEmpty(message = "Este campo deve ser preenchido")
+	@NotNull(message = "Este campo deve ser preenchido")
 	@Column(name = "pes_cpf")
 	private String cpf;
 
+	@NotEmpty(message = "Este campo deve ser preenchido")
+	@NotNull(message = "Este campo deve ser preenchido")
+	@Size(min = 5, max = 30, message = "Não deve exceder mais que 30 caracteres!")
 	@Column(name = "pes_email")
 	private String email;
 
+	@NotEmpty(message = "Este campo deve ser preenchido")
+	@NotNull(message = "Este campo deve ser preenchido")
+	@Size(min = 5, max = 20, message = "Senha não deve exceder 20 caracteres")
 	@Column(name = "pes_senha")
 	private String senha;
 
