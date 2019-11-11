@@ -40,7 +40,6 @@ public class TesteController {
 		p.setDatanasc(new Date());
 		p.setEmail("everson@everson.com");
 		p.setnPublicacoes(15);
-		p.setSexo("Homem");
 		p.setSenha("123");
 		p.setStatus(StatusPessoa.ATIVADO);
 		p.settPessoa(TipoPessoa.PUBLICADOR);
@@ -67,7 +66,6 @@ public class TesteController {
 		insc.setNome("Everson Cardoso");
 		insc.setDatanasc(new Date());
 		insc.setEmail("evbc@gmail.com");
-		insc.setSexo("Masculino");
 		insc.setNickname("Carlão25cm");
 		insc.setStatus(StatusPessoa.ATIVADO);
 		insc.setCpf("456456465");

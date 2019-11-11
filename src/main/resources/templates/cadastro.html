@@ -19,7 +19,7 @@
 			<article class="card-body mx-auto" style="max-width: 400px;">
 				<h4 class="card-title mt-3 text-center">Cria sua conta
 					gratuitamente!</h4>
-				<form action="#" th:action="@{/inscrito/cadastrar}"
+				<form action="#" th:action="@{/inscrito/cadastro}"
 					th:object="${inscrito}" method="post">
 
 					<div class="form-group input-group">
@@ -60,13 +60,11 @@
 
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-phone"></i>
+							<span class="input-group-text"> <i class="fa fa-venus-mars" aria-hidden="true"></i>
 							</span>
 						</div>
-						<select class="custom-select" style="max-width: 120px;">
-							<option selected="">Sexo</option>
-							<option value="1">Masculino</option>
-							<option value="2">Feminino</option>
+						<select class="custom-select" style= "max-width: 120px;">
+							<option th:each="sexo : ${listaSexo}" th:value="${sexo}" th:text="${sexo.descricao}" th:field="*{sexo}"></option>
 						</select>
 					</div>
 

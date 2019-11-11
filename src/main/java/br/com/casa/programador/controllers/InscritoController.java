@@ -2,6 +2,7 @@ package br.com.casa.programador.controllers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.validation.Valid;
@@ -9,11 +10,12 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
+import br.com.casa.programador.models.Sexo;
 import br.com.casa.programador.models.users.Inscrito;
 
 @Controller
@@ -21,14 +23,15 @@ import br.com.casa.programador.models.users.Inscrito;
 public class InscritoController {
 	
 	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
-	public ModelAndView cadastroInscrito(Inscrito inscrito) {
-		ModelAndView mv = new ModelAndView("cadastro");
-		mv.addObject("inscrito", inscrito);
-		return mv;
+	public String cadastroInscrito(@ModelAttribute Inscrito inscrito, Model model) {
+		model.addAttribute("inscrito", inscrito);
+		model.addAttribute("listaSexo", Arrays.asList(Sexo.values()));
+		return "cadastro";
 	}
 
-	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST) 
-	public String adicionarInscrito(Model model, @Valid Inscrito inscrito, BindingResult bResult, @RequestParam("data") String data) {
+	@RequestMapping(value = "/cadastro", method = RequestMethod.POST) 
+	public String adicionarInscrito(Model model,@ModelAttribute @Valid Inscrito inscrito, 
+			BindingResult bResult, @RequestParam("data") String data) {
 		try {
 			Date date = new SimpleDateFormat("yyyy-MM-dd").parse(data);
 		} catch (ParseException e) {

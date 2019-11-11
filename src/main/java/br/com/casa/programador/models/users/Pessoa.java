@@ -2,6 +2,7 @@ package br.com.casa.programador.models.users;
 
 import br.com.casa.programador.enums.StatusPessoa;
 import br.com.casa.programador.enums.TipoPessoa;
+import br.com.casa.programador.models.Sexo;
 
 import java.util.Date;
 
@@ -39,7 +40,8 @@ public class Pessoa {
 	private Date datanasc;
 
 	@Column(name = "pes_sexo")
-	private String sexo;
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
 
 	@NotEmpty(message = "Este campo deve ser preenchido")
 	@NotNull(message = "Este campo deve ser preenchido")
@@ -90,11 +92,11 @@ public class Pessoa {
 		this.datanasc = datanasc;
 	}
 
-	public String getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 
