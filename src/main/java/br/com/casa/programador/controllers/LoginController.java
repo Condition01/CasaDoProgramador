@@ -36,5 +36,18 @@ public class LoginController {
 		return "login";
 	}
 	
+	@RequestMapping("/reaver")
+	public String telaRecuperarSenha () {
+		return "reaverEmail";
+	}
+	
+	@RequestMapping(value = "/recuperar", method = RequestMethod.POST)
+	public String reaverSenha (@RequestParam String email, HttpSession session) {
+		Pessoa p = pessoaRepository.findByemail(email);
+		if(p!=null) {
+			return "listar";
+		}
+		return "login";
+	}
 	
 }
