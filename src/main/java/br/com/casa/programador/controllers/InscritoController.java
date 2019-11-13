@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.com.casa.programador.models.Sexo;
+import br.com.casa.programador.enums.Sexo;
 import br.com.casa.programador.models.users.Inscrito;
 import br.com.casa.programador.models.users.Pessoa;
 import br.com.casa.programador.repository.InscritoRepository;
@@ -32,7 +32,7 @@ public class InscritoController {
 	
 	@Autowired
 	InscritoRepository iRepository;
-
+	
 	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
 	public String cadastroInscrito(@ModelAttribute Inscrito inscrito, Model model) {
 		model.addAttribute("inscrito", inscrito);
@@ -44,6 +44,7 @@ public class InscritoController {
 	public String adicionarInscrito(Model model, @ModelAttribute @Valid Inscrito inscrito, BindingResult result,
 			@RequestParam("data") String data, Errors errors) {
 		Date date = convertDate(data);
+		inscrito.setDatanasc(date);
 		boolean verificarCadastro = emailJaCadastrado(inscrito.getEmail());
 		boolean verificarSenhas = inscrito.getSenha().equals(inscrito.getConfirmaSenha()) ? true : false;
 		if (result.hasErrors() || !verificarSenhas || verificarCadastro) {

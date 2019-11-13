@@ -1,4 +1,4 @@
-package br.com.casa.programador.models;
+package br.com.casa.programador.enums;
 
 public enum Sexo {
 	MASCULINO("Masculino"),

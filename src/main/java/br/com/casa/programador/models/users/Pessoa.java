@@ -1,8 +1,8 @@
 package br.com.casa.programador.models.users;
 
+import br.com.casa.programador.enums.Sexo;
 import br.com.casa.programador.enums.StatusPessoa;
 import br.com.casa.programador.enums.TipoPessoa;
-import br.com.casa.programador.models.Sexo;
 
 import java.util.Date;
 
