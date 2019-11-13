@@ -23,7 +23,7 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	public String paginaLogin() {
-		return "login";
+		return "login/login";
 	}
 	
 	@RequestMapping(value = "/logar", method = RequestMethod.POST)
@@ -33,12 +33,12 @@ public class LoginController {
 			session.setAttribute("login", p);
 			return "listar";
 		}
-		return "login";
+		return "login/login";
 	}
 	
 	@RequestMapping("/reaver")
 	public String telaRecuperarSenha () {
-		return "reaverEmail";
+		return "login/reaverEmail";
 	}
 	
 	@RequestMapping(value = "/recuperar", method = RequestMethod.POST)
@@ -47,7 +47,6 @@ public class LoginController {
 		if(p!=null) {
 			return "listar";
 		}
-		return "login";
+		return "login/login";
 	}
-	
 }
