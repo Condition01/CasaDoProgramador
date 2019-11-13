@@ -1,4 +1,4 @@
-package br.com.casa.programador.services;
+package br.com.casa.programador.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -16,9 +16,9 @@ import br.com.casa.programador.enums.TipoPessoa;
 import br.com.casa.programador.models.Tema;
 import br.com.casa.programador.models.users.Inscrito;
 import br.com.casa.programador.models.users.Publicador;
-import br.com.casa.programador.services.InscritoRepository;
-import br.com.casa.programador.services.PublicadorRepository;
-import br.com.casa.programador.services.TemaRepository;
+import br.com.casa.programador.repository.InscritoRepository;
+import br.com.casa.programador.repository.PublicadorRepository;
+import br.com.casa.programador.repository.TemaRepository;
 
 @Controller
 @RequestMapping("/teste")

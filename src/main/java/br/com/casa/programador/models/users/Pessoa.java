@@ -32,8 +32,8 @@ public class Pessoa {
 	@Column(name = "pes_pessoa")
 	private int id;
 
-	@NotEmpty(message = "Este campo deve ser preenchido")
-	@NotNull(message = "Este campo deve ser preenchido")
+	@NotEmpty(message = "Por favor preencha o nome")
+	@NotNull(message = "Por favor preencha o nome")
 	@Size(max = 70, message = "Não deve exceder mais que 70 caracteres!")
 	@Column(name = "pes_nome")
 	private String nome;
@@ -45,24 +45,27 @@ public class Pessoa {
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 
-	@CPF
-	@NotEmpty(message = "Este campo deve ser preenchido")
-	@NotNull(message = "Este campo deve ser preenchido")
+	@CPF(message = "CPF inválido!")
+	@NotEmpty(message = "Por favor preencha o cpf")
+	@NotNull(message = "Por favor preencha o cpf")
 	@Column(name = "pes_cpf")
 	private String cpf;
 
-	@NotEmpty(message = "Este campo deve ser preenchido")
-	@NotNull(message = "Este campo deve ser preenchido")
-	@Size(min = 5, max = 30, message = "Não deve exceder mais que 30 caracteres!")
+	@NotEmpty(message = "Por favor preencha o email")
+	@NotNull(message = "Por favor preencha o email")
+	@Size(max = 30, message = "Por favor use um nome menor")
 	@Column(name = "pes_email")
 	private String email;
 
-	@NotEmpty(message = "Este campo deve ser preenchido")
-	@NotNull(message = "Este campo deve ser preenchido")
-	@Size(min = 5, max = 20, message = "Senha não deve exceder 20 caracteres")
+	@NotEmpty(message = "Por favor informar a senha")
+	@NotNull(message = "Por favor informar a senha")
+	@Size(min = 5, max = 20, message = "Senha deve conter entre 6 e 20 caracteres")
 	@Column(name = "pes_senha")
 	private String senha;
 
+	@Column(name = "pes_confirma_senha")
+	private String confirmaSenha;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "pes_status")
 	private StatusPessoa Status;
@@ -141,6 +144,14 @@ public class Pessoa {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getConfirmaSenha() {
+		return confirmaSenha;
+	}
+
+	public void setConfirmaSenha(String confirmaSenha) {
+		this.confirmaSenha = confirmaSenha;
 	}
 
 }

@@ -14,11 +14,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.com.casa.programador.interfaces.Observer;
+import br.com.casa.programador.interfaces.Subject;
 import br.com.casa.programador.models.users.Inscrito;
 
 @Entity
 @Table(name = "tbl_tema")
-public class Tema {
+public class Tema implements Subject{
 	
 	@Id
 	@Column(name = "tem_id")
@@ -45,6 +47,21 @@ public class Tema {
 	
 	public void adicionarInscrito(Inscrito insc){
 		this.listaInscrito.add(insc);
+	}
+
+	@Override
+	public void adicionar() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void remover() {
+		
+	}
+
+	@Override
+	public void notificar() {
+		this.listaInscrito.forEach(i -> i.update());		
 	}
 
 }

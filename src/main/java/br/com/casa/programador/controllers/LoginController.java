@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.casa.programador.models.users.Inscrito;
 import br.com.casa.programador.models.users.Pessoa;
-import br.com.casa.programador.services.InscritoRepository;
-import br.com.casa.programador.services.PessoaRepository;
+import br.com.casa.programador.repository.InscritoRepository;
+import br.com.casa.programador.repository.PessoaRepository;
 
 @Controller
 @RequestMapping("/acesso")
