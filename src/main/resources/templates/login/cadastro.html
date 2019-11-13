@@ -22,6 +22,8 @@
 				<form action="#" th:action="@{/inscrito/cadastro}"
 					th:object="${inscrito}" method="post">
 
+					<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
+						class="text-danger"></span>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-user"></i>
@@ -29,12 +31,12 @@
 						</div>
 						<input name="nome" class="form-control"
 							placeholder="Nome completo" type="text" th:field="*{nome}">
-						<span th:if="${#fields.hasErrors('nome')}"
-							th:errors="*{nome}" class="text-danger"></span>
 					</div>
 
 					<!-- form-group// -->
 
+					<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+						class="text-danger"></span>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-envelope"></i>
@@ -60,16 +62,21 @@
 
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-venus-mars" aria-hidden="true"></i>
+							<span class="input-group-text"> <i
+								class="fa fa-venus-mars" aria-hidden="true"></i>
 							</span>
 						</div>
-						<select class="custom-select" style= "max-width: 120px;">
-							<option th:each="sexo : ${listaSexo}" th:value="${sexo}" th:text="${sexo.descricao}" th:field="*{sexo}"></option>
+						<select class="custom-select" th:field="*{sexo}"
+							style="max-width: 120px;">
+							<option th:each="sexo : ${listaSexo}" th:value="${sexo}"
+								th:text="${sexo.descricao}"></option>
 						</select>
 					</div>
 
 					<!-- form-group// -->
 
+					<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"
+						class="text-danger"></span>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i
@@ -82,6 +89,7 @@
 
 					<!-- form-group end.// -->
 
+
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-asterisk"
@@ -92,23 +100,30 @@
 					</div>
 
 					<!-- form-group end.// -->
+
+					<span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"
+						class="text-danger"></span>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
 							</span>
 						</div>
 						<input class="form-control" placeholder="Insira sua senha"
-							type="password" name="senha">
+							type="password" name="senha" th:field="*{senha}">
 					</div>
 
 					<!-- form-group// -->
+
+					<span th:if="${#fields.hasErrors('confirmaSenha')}" th:errors="*{confirmaSenha}"
+						class="text-danger"></span>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
 							</span>
 						</div>
 						<input class="form-control" placeholder="Repita sua senha"
-							type="password" name="validaSenha">
+							type="password" name="validaSenha"
+							th:field="*{confirmaSenha}">
 					</div>
 
 					<!-- form-group// -->

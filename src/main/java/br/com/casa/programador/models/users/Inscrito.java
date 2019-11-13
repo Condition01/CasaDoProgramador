@@ -14,15 +14,16 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.com.casa.programador.interfaces.Observer;
 import br.com.casa.programador.models.Tema;
 
 @Entity
 @Table(name = "tbl_inscrito")
-public class Inscrito extends Pessoa{
+public class Inscrito extends Pessoa implements Observer{
 	
-	@NotEmpty(message = "Este campo deve ser preenchido")
-	@NotNull(message = "Este campo deve ser preenchido")
-	@Size(min = 5, max = 20, message = "Não deve exceder mais que 20 caracteres!")
+	@NotEmpty(message = "Nickname deve ser preenchido")
+	@NotNull(message = "Nickname deve ser preenchido")
+	@Size(max = 20, message = "Não deve exceder mais que 20 caracteres!")
 	@Column(name = "ins_nickname")
 	private String nickname;
 	
@@ -49,6 +50,12 @@ public class Inscrito extends Pessoa{
 
 	public void setListaTemas(List<Tema> listaTemas) {
 		this.listaTemas = listaTemas;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
