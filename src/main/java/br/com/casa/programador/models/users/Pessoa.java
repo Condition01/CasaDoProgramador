@@ -20,6 +20,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "tbl_pessoa")
@@ -43,6 +45,7 @@ public class Pessoa {
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 
+	@CPF
 	@NotEmpty(message = "Este campo deve ser preenchido")
 	@NotNull(message = "Este campo deve ser preenchido")
 	@Column(name = "pes_cpf")

@@ -31,18 +31,24 @@ public class InscritoController {
 
 	@RequestMapping(value = "/cadastro", method = RequestMethod.POST) 
 	public String adicionarInscrito(Model model,@ModelAttribute @Valid Inscrito inscrito, 
-			BindingResult bResult, @RequestParam("data") String data) {
+			BindingResult result, @RequestParam("data") String data) {
+			Date date = convertDate(data);  
+		if(result.hasErrors()) {
+			return cadastroInscrito(inscrito, model);
+		}
+		return "listar";
+	}
+
+	private Date convertDate(String data) {
+		Date date = null;
 		try {
-			Date date = new SimpleDateFormat("yyyy-MM-dd").parse(data);
+			date = new SimpleDateFormat("yyyy-MM-dd").parse(data);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}  
-		if(bResult.hasErrors()) {
-			model.addAttribute("inscrito", inscrito);
-			return "cadastro";
+		}finally{
+			return date;
 		}
-		return "listar";
 	}
 	
 }
