@@ -19,10 +19,16 @@
         <link rel="stylesheet" th:href="@{/css_relatorios/templatemo-style.css}">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
         <script th:src="@{/js_relatorios/vendor/modernizr-2.8.3-respond-1.4.2.min.js}"></script>
+        
+        <script type="text/javascript">
+        	
+        </script>
+        
+        
+        
     </head>
 
 <body>
-
         <header class="nav-down responsive-nav hidden-lg hidden-md">
             <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
                 <span class="sr-only">Toggle navigation</span>
@@ -282,6 +288,7 @@
                     </div>
                 </div>
             </section>
+            
             <section id="projects" class="content-section">
                 <div class="section-heading">
                     <h1>Relatório<br><em> de Usuários</em></h1>
@@ -289,17 +296,24 @@
                     <br>aos usuários do portal, obtendo uma visão geral do 
 		    <br>desempenho do sistema .</p>
                 </div>
-                <div class="section-content">
+                
+                
+			<div class="embed-responsive embed-responsive-4by3">
+				<iframe src="http://localhost:8080/relatorio/relatorioAssunto"></iframe>
+			</div>
+
+			<div class="section-content">
                     <div class="masonry">
                         <div class="row">
                             <div class="item">
                                 <div class="col-md-8">
-                                    <a th:href="@{/img_relatorios/portfolio_big_1.jpg}" data-lightbox="image"><img th:src="@{/img_relatorios/portfolio_1.jpg}" alt="image 1"></a>
+								<a >
+								<img th:src="@{/img_relatorios/portfolio_1.jpg}" alt="image 1"></a>
                                 </div>
                             </div>
                             <div class="item second-item">
                                 <div class="col-md-4">
-                                    <a th:href="@{/img_relatorios/portfolio_big_2.jpg}" data-lightbox="image"><img th:src="@{/img_relatorios/portfolio_2.jpg}" alt="image 2"></a>
+                                    <a th:href="@{/relatorio/relatorioUsuario}" ><img th:src="@{/img_relatorios/portfolio_2.jpg}" alt="image 2"></a>
                                 </div>
                             </div>
                             <div class="item">
@@ -322,22 +336,38 @@
                 </div>            
             </section>
            
+           
+           
+		<div class="embed-responsive embed-responsive-4by3">
+			<iframe src="http://localhost:8080/relatorio/relatorioUsuario"></iframe>
+		</div>
+	
+           
             <section id="blog" class="content-section">
                 <div class="section-heading">
-                    <h1>Relatório<br><em>de Publicadores</em></h1>
+                    <h1>Relatório<br><em> de Melhores Publicações</em></h1>
                     <p>Neste trecho você irá encontrar informações pertinentes aos publicadores, 
                     <br>tem o objetivo de evidenciar quais publicadores estão tendo maior destaque
 		    <br> e não, dando uma ideia geral sobre os publicadores de maior desempenho.</p>
                 </div>
+                <br>
+                <br>
+                
+                
                 <div class="section-content">
                     <div class="tabs-content">
                         <div class="wrapper">
                             <ul class="tabs clearfix" data-tabgroup="first-tab-group">
-                              <li><a href="#tab1" class="active">July 2018</a></li>
+                              <li><a href="#tab1" class="active" > <span id="mes">July 2018 </span> </a></li>
                               <li><a href="#tab2">June 2018</a></li>
                               <li><a href="#tab3">May 2018</a></li>
                               <li><a href="#tab4">April 2018</a></li>
                             </ul>
+                            
+                            
+                            
+                            
+                            
                             <section id="first-tab-group" class="tabgroup">
                                 <div id="tab1">
                                     <ul>
@@ -523,16 +553,20 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </section> 
+                            </section>
+                          
+                             
                         </div>
                     </div>
                 </div>
-            </section>       
+            </section>   
+                
         </div>
+        <br>
+	
 
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script th:src="@{/js_relatorios/vendor/jquery-1.11.2.min.js}"><\/script>')</script>
 
     <script th:src="@{/js_relatorios/vendor/bootstrap.min.js}"></script>
@@ -581,6 +615,12 @@
         }
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		var mes     = document.getElementById("mes").innerHTML = "November 2019";
+		alert('mes atual é :' + mes );
+		document.getElementById("mes").style.color="#f00";
+	</script>
 
 </body>
 </html>
