@@ -43,19 +43,23 @@ public class InscritoController {
 	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
 	public String adicionarInscrito(Model model, @ModelAttribute @Valid Inscrito inscrito, BindingResult result,
 			@RequestParam("data") String data, Errors errors) {
-		Date date = convertDate(data);
-		inscrito.setDatanasc(date);
+		
 		boolean verificarCadastro = emailJaCadastrado(inscrito.getEmail());
 		boolean verificarSenhas = inscrito.getSenha().equals(inscrito.getConfirmaSenha()) ? true : false;
-		if (result.hasErrors() || !verificarSenhas || verificarCadastro) {
+		if (result.hasErrors() || !verificarSenhas || verificarCadastro || data.equals("")) {
 			if (!verificarSenhas) {
 				errors.rejectValue("confirmaSenha", "senhas.nao.batem", "Senhas não batem!");
 			}
 			if (verificarCadastro) {
 				errors.rejectValue("email", "email.ja.esta.em.uso", "Este email já esta em uso");
 			}
+			if(data.equals("")) {
+				errors.rejectValue("datanasc", "data.invalida", "Por favor informar uma data");
+			}
 			return cadastroInscrito(inscrito, model);
 		}
+		Date date = convertDate(data);
+		inscrito.setDatanasc(date);
 		iRepository.save(inscrito);
 		return mostrarInscrito(inscrito);
 	}

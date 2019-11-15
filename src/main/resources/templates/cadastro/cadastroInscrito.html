@@ -49,6 +49,8 @@
 
 					<!-- form-group// -->
 
+					<span th:if="${#fields.hasErrors('datanasc')}" th:errors="*{datanasc}"
+						class="text-danger"></span>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-calendar"

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_publicador")
 public class Publicador extends Pessoa{
 	
-	@Column(name = "pub_n_publicacoes")
+	@Column(name = "pub_n_publicacoes", nullable = true)
 	int nPublicacoes;
 
 	public int getnPublicacoes() {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.casa.programador.enums.Sexo;
 import br.com.casa.programador.enums.StatusPessoa;
 import br.com.casa.programador.enums.TipoPessoa;
 import br.com.casa.programador.models.Tema;
@@ -41,9 +42,12 @@ public class TesteController {
 		p.setEmail("everson@everson.com");
 		p.setnPublicacoes(15);
 		p.setSenha("123");
+		p.setSexo(Sexo.MASCULINO);
 		p.setStatus(StatusPessoa.ATIVADO);
 		p.settPessoa(TipoPessoa.PUBLICADOR);
-		p.setCpf("456456465");
+		p.setCpf("41846827825");
+		p.setSenha("123456");
+		p.setConfirmaSenha("123456");
 		model.addAttribute("publicador", p);
 		publicadorRepository.save(p);
 		return "index";
