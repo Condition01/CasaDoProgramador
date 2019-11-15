@@ -10,17 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import br.com.casa.programador.interfaces.Observer;
-import br.com.casa.programador.interfaces.Subject;
 import br.com.casa.programador.models.users.Inscrito;
 
 @Entity
 @Table(name = "tbl_tema")
-public class Tema implements Subject{
+public class Tema{
 	
 	@Id
 	@Column(name = "tem_id")
@@ -30,7 +29,10 @@ public class Tema implements Subject{
 	@Column(name = "tem_tema")
 	private String tema;
 	
-	@ManyToMany(mappedBy = "listaTemas", cascade = CascadeType.ALL)
+	@ManyToMany
+	@JoinTable(name = "tbl_inscrito_tema", 
+	joinColumns = {@JoinColumn (referencedColumnName = "tem_id")}, 
+	inverseJoinColumns = {@JoinColumn(referencedColumnName = "pes_pessoa")})
 	private List<Inscrito> listaInscrito = new ArrayList<>();
 //	private List<PublicacaoTema> pubTema;
 	
@@ -47,21 +49,6 @@ public class Tema implements Subject{
 	
 	public void adicionarInscrito(Inscrito insc){
 		this.listaInscrito.add(insc);
-	}
-
-	@Override
-	public void adicionar() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void remover() {
-		
-	}
-
-	@Override
-	public void notificar() {
-		this.listaInscrito.forEach(i -> i.update());		
 	}
 
 }

@@ -14,12 +14,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.com.casa.programador.interfaces.Observer;
 import br.com.casa.programador.models.Tema;
 
 @Entity
 @Table(name = "tbl_inscrito")
-public class Inscrito extends Pessoa implements Observer{
+public class Inscrito extends Pessoa{
 	
 	@NotEmpty(message = "Nickname deve ser preenchido")
 	@NotNull(message = "Nickname deve ser preenchido")
@@ -27,13 +26,7 @@ public class Inscrito extends Pessoa implements Observer{
 	@Column(name = "ins_nickname")
 	private String nickname;
 	
-	@ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-        })
-	@JoinTable(name = "tbl_inscrito_tema", 
-	joinColumns = {@JoinColumn (referencedColumnName = "pes_pessoa")}, 
-	inverseJoinColumns = {@JoinColumn(referencedColumnName = "tem_id")})
+	@ManyToMany(mappedBy = "listaInscrito")
 	private List<Tema> listaTemas = new ArrayList<>();
 
 	public String getNickname() {
@@ -52,10 +45,4 @@ public class Inscrito extends Pessoa implements Observer{
 		this.listaTemas = listaTemas;
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

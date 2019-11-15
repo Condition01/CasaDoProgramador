@@ -1,5 +1,6 @@
 <html>
-<head>
+<head xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 </head>
 <body>
@@ -29,7 +30,6 @@
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Algo mais aqui</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link disabled" href="#">Desativado</a>
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
@@ -37,7 +37,20 @@
 						placeholder="Pesquisar" aria-label="Pesquisar">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
 				</form>
+				<ul class="navbar-nav pull-right">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"><i class="fa fa-user-circle"
+							aria-hidden="true"></i></a>
+						<div class="dropdown-menu dropdown-menu-right"
+							aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" th:href="@{/acesso/login}" href="#">Logar</a>
+						</div></li>
+					</li>
+				</ul>
 			</div>
+
 		</nav>
 	</header>
 </body>

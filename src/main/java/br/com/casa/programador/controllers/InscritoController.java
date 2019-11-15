@@ -37,7 +37,7 @@ public class InscritoController {
 	public String cadastroInscrito(@ModelAttribute Inscrito inscrito, Model model) {
 		model.addAttribute("inscrito", inscrito);
 		model.addAttribute("listaSexo", Arrays.asList(Sexo.values()));
-		return "cadastro";
+		return "cadastro/cadastroInscrito";
 	}
 
 	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
@@ -56,7 +56,8 @@ public class InscritoController {
 			}
 			return cadastroInscrito(inscrito, model);
 		}
-		return "listar";
+		iRepository.save(inscrito);
+		return mostrarInscrito(inscrito);
 	}
 
 	private Date convertDate(String data) {
@@ -72,6 +73,10 @@ public class InscritoController {
 	}
 
 	public boolean emailJaCadastrado(String email) {
-		return pRepository.findByemail(email)!=null?true:false;
+		return pRepository.findEmail(email)!=null?true:false;
+	}
+	
+	public String mostrarInscrito(Inscrito inscrito) {
+		return "mostraInscrito";
 	}
 }

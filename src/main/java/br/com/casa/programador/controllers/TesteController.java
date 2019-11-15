@@ -101,4 +101,5 @@ public class TesteController {
 	public String cadastro() {
 		return "cadastro";
 	}
+	
 }

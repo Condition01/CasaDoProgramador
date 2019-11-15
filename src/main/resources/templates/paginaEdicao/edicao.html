@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Criar edição!</title>
+</head>
+<body>
+	<div class="ce-example">
+		<div id="header">
+			<h1 style="text-align: center;">HEADER</h1>
+		</div>
+		<div class="ce-example__content _ce-example__content--small">
+			<div id="editorjs"></div>
+			<button style="text-align: center;">Salvar Artigo</button>
+		</div>
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+	<!-- Header -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
+	<!-- Image -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script>
+	<!-- Delimiter -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
+	<!-- List -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>
+	<!-- Checklist -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
+	<!-- Quote -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
+	<!-- Code -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
+	<!-- Embed -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>
+	<!-- Table -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>
+	<!-- Link -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script>
+	<!-- Warning -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/image@2.3.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
+	<!-- Marker -->
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script>
+	<!-- Inline Code -->
+	<script src="/dist/editor.js"></script>
+
+	<script>
+    
+        const editor = new EditorJS({
+            holder: 'editorjs',
+
+            tools: { //são as ferramentas que vamos utilizar do Editor.js
+                header:{
+                    class: Header,
+                    inlineToolbar: ['link']
+                },
+                list:{
+                    class: List,
+                    inlineToolbar: [
+                        'link', 'bold'
+                    ]
+                },
+                embed: {
+                    class: Embed,
+                    inlineToolbar: false,
+                    config: {
+                        services: {
+                            youtube: true,
+                            coub: true
+                        }
+                    }
+                }
+            }
+        });
+
+        let saveBtn = document.querySelector('button');
+
+        saveBtn.addEventListener('click', function(){
+            editor.save().then((outputData) => {
+                console.log('Article data: ', outputData)
+            }) .catch((error) => {
+                console.log('Saving failed', error)
+            })
+        })
+            
+    </script>
+</body>
+</html>
