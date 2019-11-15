@@ -43,7 +43,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/recuperar", method = RequestMethod.POST)
 	public String reaverSenha (@RequestParam String email, HttpSession session) {
-		Pessoa p = pessoaRepository.findByemail(email);
+		Pessoa p = pessoaRepository.findByEmail(email);
 		if(p!=null) {
 			return "listar";
 		}
