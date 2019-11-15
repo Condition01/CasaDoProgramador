@@ -83,4 +83,5 @@ public class InscritoController {
 	public String mostrarInscrito(Inscrito inscrito) {
 		return "mostraInscrito";
 	}
+	
 }
