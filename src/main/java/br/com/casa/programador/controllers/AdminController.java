@@ -83,5 +83,9 @@ public class AdminController {
 	public boolean emailJaCadastrado(String email) {
 		return pRepository.findEmail(email)!=null?true:false;
 	}
-	
+		
+	@RequestMapping(value = "/acessoAdmin", method= RequestMethod.GET)
+	public String telaAdministrador() {
+		return "admin/telaAdmin";
+	}
 }
