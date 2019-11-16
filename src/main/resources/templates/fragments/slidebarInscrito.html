@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Slide-bar inscrito</title>
+</head>
+<body>
+	<nav id="sidebar" th:fragment="slidebarInscrito">
+		<div class="sidebar-header">
+			<h3>Casa do Programador</h3>
+			<strong><img alt="logo" width="60px" height="52px"
+				th:src="@{/images/logo.png}"></strong>
+		</div>
+		
+		<ul class="list-unstyled components">
+			<li><a href="#"> <i class="fas fa-home"></i> Home
+			</a></li>
+			<li class="active"><a href="#homeSubmenu" data-toggle="collapse"
+				aria-expanded="false" class="dropdown-toggle"> <i
+					class="fas fa-copy"></i> Conteúdo
+			</a>
+				<ul class="collapse list-unstyled" id="homeSubmenu">
+					<li><a href="#">Home 1</a></li>
+					<li><a href="#">Home 2</a></li>
+					<li><a href="#">Home 3</a></li>
+				</ul></li>
+			<li>
+			<li><a href="#"> <i class="fa fa-heart"></i> Temas
+			</a></li>
+			<li><a href="#"> <i class="fas fa-question"></i> Quem somos
+			</a></li>
+			<li><a href="#"> <i class="fas fa-paper-plane"></i> Contato
+			</a></li>
+		</ul>
+	</nav>
+</body>
+</html>

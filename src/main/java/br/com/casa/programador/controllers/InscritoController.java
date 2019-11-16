@@ -28,7 +28,7 @@ import br.com.casa.programador.repository.PessoaRepository;
 public class InscritoController {
 	
 	@Autowired
-	PessoaRepository pRepository;
+	Validador validador;
 	
 	@Autowired
 	InscritoRepository iRepository;
@@ -43,19 +43,7 @@ public class InscritoController {
 	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
 	public String adicionarInscrito(Model model, @ModelAttribute @Valid Inscrito inscrito, BindingResult result,
 			@RequestParam("data") String data, Errors errors) {
-		
-		boolean verificarCadastro = emailJaCadastrado(inscrito.getEmail());
-		boolean verificarSenhas = inscrito.getSenha().equals(inscrito.getConfirmaSenha()) ? true : false;
-		if (result.hasErrors() || !verificarSenhas || verificarCadastro || data.equals("")) {
-			if (!verificarSenhas) {
-				errors.rejectValue("confirmaSenha", "senhas.nao.batem", "Senhas não batem!");
-			}
-			if (verificarCadastro) {
-				errors.rejectValue("email", "email.ja.esta.em.uso", "Este email já esta em uso");
-			}
-			if(data.equals("")) {
-				errors.rejectValue("datanasc", "data.invalida", "Por favor informar uma data");
-			}
+		if(validador.verificaErros(inscrito, result, data, errors)) {
 			return cadastroInscrito(inscrito, model);
 		}
 		Date date = convertDate(data);
@@ -75,13 +63,14 @@ public class InscritoController {
 			return date;
 		}
 	}
-
-	public boolean emailJaCadastrado(String email) {
-		return pRepository.findEmail(email)!=null?true:false;
-	}
 	
 	public String mostrarInscrito(Inscrito inscrito) {
 		return "teste/mostraInscrito";
+	}
+	
+	@RequestMapping(value = "/acessoInscrito", method = RequestMethod.GET)
+	public String acessoInscrito() {
+		return "inscrito/telaInscrito";
 	}
 	
 }
