@@ -49,4 +49,9 @@ public class LoginController {
 		}
 		return "login/login";
 	}
+	
+	@RequestMapping(value = "/contato", method = RequestMethod.GET)
+	public String paginaContato() {
+		return "login/paginaContato";
+	}
 }
