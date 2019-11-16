@@ -1,13 +1,14 @@
-<html>
-<head xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
+<head>
 <meta charset="utf-8">
+
 </head>
 <body>
 	<header th:fragment="cabecalho">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light" style="background: #FFF819;">
 			<a class="navbar-brand" href="#">Navbar</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
+			<button class="navbar-toggler" id="btn1" type="button" data-toggle="collapse"
 				data-target="#conteudoNavbarSuportado"
 				aria-controls="conteudoNavbarSuportado" aria-expanded="false"
 				aria-label="Alterna navegação">
@@ -24,18 +25,18 @@
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> Dropdown </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Ação</a> <a
-								class="dropdown-item" href="#">Outra ação</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #000000;">
+							<a class="dropdown-item menu1" href="#" style="color: #FFF819;">Ação</a> 
+							<a class="dropdown-item menu1" href="#" style="color: #FFF819;">Outra ação</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Algo mais aqui</a>
+							<a class="dropdown-item menu1" href="#" style="color: #FFF819;">Algo mais aqui</a>
 						</div></li>
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
 						placeholder="Pesquisar" aria-label="Pesquisar">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+					<button class="btn btn btn-dark my-2 my-sm-0" type="submit" style="color: #FFF819;">Pesquisar</button>
 				</form>
 				<ul class="navbar-nav pull-right">
 					<li class="nav-item dropdown"><a
@@ -43,9 +44,9 @@
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"><i class="fa fa-user-circle"
 							aria-hidden="true"></i></a>
-						<div class="dropdown-menu dropdown-menu-right"
-							aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" th:href="@{/acesso/login}" href="#">Logar</a>
+						<div class="dropdown-menu dropdown-menu-right" 
+							aria-labelledby="navbarDropdown" style="background-color: #000000;">
+							<a class="dropdown-item menu1" th:href="@{/acesso/login}" href="#" style="color: #FFF819;">Logar</a>
 						</div></li>
 					</li>
 				</ul>

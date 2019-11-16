@@ -77,7 +77,7 @@ public class AdminController {
 	}
 
 	public String mostrarPublicador(Publicador publicador) {
-		return "mostraPublicador";
+		return "teste/mostraPublicador";
 	}
 	
 	public boolean emailJaCadastrado(String email) {
