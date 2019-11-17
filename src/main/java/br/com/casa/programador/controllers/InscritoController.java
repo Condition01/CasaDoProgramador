@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -71,6 +72,49 @@ public class InscritoController {
 	@RequestMapping(value = "/acessoInscrito", method = RequestMethod.GET)
 	public String acessoInscrito() {
 		return "inscrito/telaInscrito";
+	}
+	
+	@RequestMapping(value = "/inscritoEditar", method = RequestMethod.GET)
+	public String inscritoEditar(@ModelAttribute("inscrito") Inscrito inscrito, Model model) {
+		if(inscrito.getEmail() == null) {
+			Optional<Inscrito> novoInscrito = iRepository.findById(101);
+			if(novoInscrito.isPresent()) {
+				inscrito=novoInscrito.get();
+			}
+		}
+		System.out.println(inscrito.getEmail());
+		System.out.println(inscrito.getSexo());
+		model.addAttribute("inscrito", inscrito);
+		return "inscrito/inscritoEditar";
+	}
+	
+	@RequestMapping(value = "/inscritoEditar", method = RequestMethod.POST)
+	public String inscritoEditar(@ModelAttribute("inscrito") Inscrito inscrito, BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			return inscritoEditar(inscrito, model);
+		}
+		inscrito = inscritoTranspassado(inscrito);
+		iRepository.save(inscrito);
+		return inscritoEditar(inscrito, model);
+	}
+	
+	public Inscrito inscritoTranspassado(Inscrito insc) {
+		Optional<Inscrito> inscritoAntigo = iRepository.findById(insc.getId());
+		Inscrito inscrito;
+		if(inscritoAntigo.isPresent()) {
+			inscrito = inscritoAntigo.get();
+			inscrito.setDatanasc(insc.getDatanasc());
+			inscrito.setNome(insc.getNome());
+			inscrito.setNickname(insc.getNickname());
+			return inscrito;
+		}else {
+			return null;
+		}
+	}
+	
+	@ModelAttribute(value = "inscrito")
+	public Inscrito novoInscrito() {
+		return new Inscrito();
 	}
 	
 }

@@ -14,23 +14,21 @@
 		</div>
 		
 		<ul class="list-unstyled components">
-			<li><a href="#"> <i class="fas fa-home"></i> Home
+			<li><a href="#" th:href="@{/inscrito/acessoInscrito}"> <i class="fas fa-user"></i> Inicio
+			</a></li>
+			<li><a href="#" th:href="@{/inscrito/inscritoEditar}"> <i class="fas fa-edit"></i> Editar
 			</a></li>
 			<li class="active"><a href="#homeSubmenu" data-toggle="collapse"
 				aria-expanded="false" class="dropdown-toggle"> <i
 					class="fas fa-copy"></i> Conteúdo
 			</a>
 				<ul class="collapse list-unstyled" id="homeSubmenu">
-					<li><a href="#">Home 1</a></li>
-					<li><a href="#">Home 2</a></li>
-					<li><a href="#">Home 3</a></li>
+					<li><a href="#" th:href="@{/}">Programação</a></li>
+					<li><a href="#" th:href="@{/}">Banco de dados</a></li>
+					<li><a href="#" th:href="@{/}">Engenharia de software</a></li>
 				</ul></li>
 			<li>
-			<li><a href="#"> <i class="fa fa-heart"></i> Temas
-			</a></li>
-			<li><a href="#"> <i class="fas fa-question"></i> Quem somos
-			</a></li>
-			<li><a href="#"> <i class="fas fa-paper-plane"></i> Contato
+			<li><a href="#" th:href="@{/inscrito/}"> <i class="fa fa-heart"></i> Temas
 			</a></li>
 		</ul>
 	</nav>
