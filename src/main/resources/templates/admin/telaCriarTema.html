@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<style type="text/css">
+	body{
+      background: #B8850B;
+      padding-top: 30px;
+    }
+	.main-section{
+		padding: 15px;
+		background:#f1f1f1;
+	}
+	.custom-file-control::after {
+  		content: "Choose file...";
+	}
+	.custom-file-control::before {
+ 		 content: "Browse";
+ 	}
+ 	 .btn-custom{
+		padding: 1px 15px 3px 2px;
+		border-radius: 50px;	
+	}
+
+	.btn-icon{
+	    padding: 8px;
+		background: #FFFFFF;
+	}
+	
+	</style>
+	
+	
+
+ 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</head>
+<body> 
+<div class="container">
+    <div class="row">
+      <div class="offset-lg-2 col-lg-8 col-sm-8 col-8 border rounded main-section">
+        <h3 class="text-center text-inverse">Formulario Adicionar Tema</h3>
+        <hr>
+        <form class="container" id="needs-validation" novalidate>
+          <div class="row">
+            <div class="col-lg-6 col-sm-6 col-12">
+               <div class="form-group">
+                <label class="text-inverse" for="validationCustom01">ID_Tema</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="ID_TEMA" value="idTema" required>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label class="text-inverse" for="validationCustom02">Nome do Tema</label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder="Nome do Tema" value="nomeTema" required>
+              </div>  
+            </div>
+          </div>
+         
+            
+         
+          <div class="row">
+            <div class="col-lg-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label class="custom-file">
+                  <input type="file" id="file" class="form-control custom-file-input" required>
+                  <span class="custom-file-control"></span>
+                  <div class="invalid-feedback">
+                    Please selected any File.
+                  </div>
+                </label>
+              </div>  
+            </div>
+            
+          
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-12 text-center">
+                <button class="btn btn-info" type="submit">  +  </button>
+            </div>
+          </div>  
+        </form>
+      </div>
+    </div>  
+</div>
+
+<br>
+<br>
+
+	<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID_TEMA</th>
+      <th scope="col">NOME TEMA</th>
+      <th scope="col">OPERAÇÕES</th>
+    </tr>
+  </thead>
+  <tbody>
+			<tr>
+				<th scope="row">1</th>
+				<td>Mark</td>
+				<td>
+					<button type="button" class="btn btn-primary">Primary</button>
+					<button type="button" class="btn btn-secondary">Secondary</button>
+					<button type="button" class="btn btn-success">Success</button>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">2</th>
+				<td>Jacob</td>
+				<td>
+					<button type="button" class="btn btn-primary">Primary</button>
+					<button type="button" class="btn btn-secondary">Secondary</button>
+					<button type="button" class="btn btn-success">Success</button>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">3</th>
+				<td>Larry</td>
+				<td>
+					<button type="button" class="btn btn-primary">Primary</button>
+					<button type="button" class="btn btn-secondary">Secondary</button>
+					<button type="button" class="btn btn-success">Success</button>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">1</th>
+				<td>Mark</td>
+				<td>
+					<button type="button" class="btn btn-primary">Primary</button>
+					<button type="button" class="btn btn-secondary">Secondary</button>
+					<button type="button" class="btn btn-success">Success</button>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">2</th>
+				<td>Jacob</td>
+				<td>
+					<button type="button" class="btn btn-primary">Primary</button>
+					<button type="button" class="btn btn-secondary">Secondary</button>
+					<button type="button" class="btn btn-success">Success</button>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">3</th>
+				<td>Larry</td>
+				<td>
+					<button type="button" class="btn btn-primary">Primary</button>
+					<button type="button" class="btn btn-secondary">Secondary</button>
+					<button type="button" class="btn btn-success">Success</button>
+				</td>
+			</tr>
+		</tbody>
+</table>
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+		<script type="text/javascript">
+		(function() {
+		    'use strict';
+		    window.addEventListener('load', function() {
+		      var form = document.getElementById('needs-validation');
+		      form.addEventListener('submit', function(event) {
+		        if (form.checkValidity() === false) {
+		          event.preventDefault();
+		          event.stopPropagation();
+		        }
+		        form.classList.add('was-validated');
+		      }, false);
+		    }, false);
+		  })();
+		</script>
+</body>
+</html>

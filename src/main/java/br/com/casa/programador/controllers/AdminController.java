@@ -88,4 +88,10 @@ public class AdminController {
 	public String telaAdministrador() {
 		return "admin/telaAdmin";
 	}
+	
+	@RequestMapping(value = "/criarTema", method= RequestMethod.GET)
+	public String telaCriarTema() {
+		return "admin/telaCriarTema";
+	}
+	
 }
