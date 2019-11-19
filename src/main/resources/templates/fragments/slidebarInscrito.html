@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Slide-bar inscrito</title>
+</head>
+<body>
+	<nav id="sidebar" th:fragment="slidebarInscrito">
+		<div class="sidebar-header">
+			<h3>Casa do Programador</h3>
+			<strong><img alt="logo" width="60px" height="52px"
+				th:src="@{/images/logo.png}"></strong>
+		</div>
+		
+		<ul class="list-unstyled components">
+			<li><a href="#" th:href="@{/inscrito/acessoInscrito}"> <i class="fas fa-user"></i> Inicio
+			</a></li>
+			<li><a href="#" th:href="@{/inscrito/inscritoEditar}"> <i class="fas fa-edit"></i> Editar
+			</a></li>
+			<li class="active"><a href="#homeSubmenu" data-toggle="collapse"
+				aria-expanded="false" class="dropdown-toggle"> <i
+					class="fas fa-copy"></i> Conteúdo
+			</a>
+				<ul class="collapse list-unstyled" id="homeSubmenu">
+					<li><a href="#" th:href="@{/}">Programação</a></li>
+					<li><a href="#" th:href="@{/}">Banco de dados</a></li>
+					<li><a href="#" th:href="@{/}">Engenharia de software</a></li>
+				</ul></li>
+			<li>
+			<li><a href="#" th:href="@{/inscrito/}"> <i class="fa fa-heart"></i> Temas
+			</a></li>
+		</ul>
+	</nav>
+</body>
+</html>

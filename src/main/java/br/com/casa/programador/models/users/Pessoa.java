@@ -21,6 +21,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -33,12 +34,12 @@ public class Pessoa {
 	private int id;
 
 	@NotEmpty(message = "Por favor preencha o nome")
-	@NotNull(message = "Por favor preencha o nome")
 	@Size(max = 70, message = "Não deve exceder mais que 70 caracteres!")
 	@Column(name = "pes_nome")
 	private String nome;
 
 	@Column(name = "pes_datanasc")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date datanasc;
 
 	@Column(name = "pes_sexo")
@@ -47,18 +48,15 @@ public class Pessoa {
 
 	@CPF(message = "CPF inválido!")
 	@NotEmpty(message = "Por favor preencha o cpf")
-	@NotNull(message = "Por favor preencha o cpf")
 	@Column(name = "pes_cpf")
 	private String cpf;
 
 	@NotEmpty(message = "Por favor preencha o email")
-	@NotNull(message = "Por favor preencha o email")
 	@Size(max = 30, message = "Por favor use um nome menor")
 	@Column(name = "pes_email")
 	private String email;
 
 	@NotEmpty(message = "Por favor informar a senha")
-	@NotNull(message = "Por favor informar a senha")
 	@Size(min = 5, max = 20, message = "Senha deve conter entre 6 e 20 caracteres")
 	@Column(name = "pes_senha")
 	private String senha;

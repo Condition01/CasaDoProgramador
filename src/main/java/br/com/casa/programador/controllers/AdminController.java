@@ -31,14 +31,17 @@ import br.com.casa.programador.models.*;
 public class AdminController {
 	
 	@Autowired
-	PessoaRepository pRepository;
+	Validador validador;
 	
 	@Autowired
 	PublicadorRepository puRepository;
 	
+<<<<<<< HEAD
 	@Autowired
 	TemaRepository tRepository;
 	
+=======
+>>>>>>> a8b5ca8d526f15d3b2b33900bf6842a9ef663abd
 	@RequestMapping(value = "/cadastroPublicador", method= RequestMethod.GET)
 	public String adicionarPublicador(Publicador publicador, Model model) {
 		model.addAttribute("publicador", publicador);
@@ -49,19 +52,7 @@ public class AdminController {
 	@RequestMapping(value = "/cadastroPublicador", method= RequestMethod.POST)
 	public String adicionarPublicador(@ModelAttribute @Valid Publicador publicador, 
 			BindingResult result, Model model, @RequestParam String data, Errors errors) {
-		
-		boolean verificarCadastro = emailJaCadastrado(publicador.getEmail());
-		boolean verificarSenhas = publicador.getSenha().equals(publicador.getConfirmaSenha()) ? true : false;
-		if (result.hasErrors() || !verificarSenhas || verificarCadastro || data.equals("")) {
-			if (!verificarSenhas) {
-				errors.rejectValue("confirmaSenha", "senhas.nao.batem", "Senhas não batem!");
-			}
-			if (verificarCadastro) {
-				errors.rejectValue("email", "email.ja.esta.em.uso", "Este email já esta em uso");
-			}
-			if(data.equals("")) {
-				errors.rejectValue("datanasc", "data.invalida", "Por favor informar uma data");
-			}
+		if(validador.verificaErros(publicador, result, data, errors)) {
 			return adicionarPublicador(publicador, model);
 		}
 		Date date = convertDate(data);
@@ -83,12 +74,9 @@ public class AdminController {
 	}
 
 	public String mostrarPublicador(Publicador publicador) {
-		return "mostraPublicador";
+		return "teste/mostraPublicador";
 	}
-	
-	public boolean emailJaCadastrado(String email) {
-		return pRepository.findEmail(email)!=null?true:false;
-	}
+
 		
 	@RequestMapping(value = "/acessoAdmin", method= RequestMethod.GET)
 	public String telaAdministrador() {

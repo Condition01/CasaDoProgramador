@@ -3,6 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
+<style type="text/css">
+</style>
 <title>Registre-se aqui!</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -11,6 +13,12 @@
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <link rel="stylesheet" th:href="@{/css/cadastro.css}" />
+<link rel="stylesheet" th:href="@{/css/nav.css}" />
+<style type="text/css">
+
+
+
+</style>
 </head>
 <body>
 	<header th:replace="fragments/header :: cabecalho"></header>
@@ -49,8 +57,8 @@
 
 					<!-- form-group// -->
 
-					<span th:if="${#fields.hasErrors('datanasc')}" th:errors="*{datanasc}"
-						class="text-danger"></span>
+					<span th:if="${#fields.hasErrors('datanasc')}"
+						th:errors="*{datanasc}" class="text-danger"></span>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-calendar"
@@ -117,16 +125,15 @@
 
 					<!-- form-group// -->
 
-					<span th:if="${#fields.hasErrors('confirmaSenha')}" th:errors="*{confirmaSenha}"
-						class="text-danger"></span>
+					<span th:if="${#fields.hasErrors('confirmaSenha')}"
+						th:errors="*{confirmaSenha}" class="text-danger"></span>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
 							</span>
 						</div>
 						<input class="form-control" placeholder="Repita sua senha"
-							type="password" name="validaSenha"
-							th:field="*{confirmaSenha}">
+							type="password" name="validaSenha" th:field="*{confirmaSenha}">
 					</div>
 
 					<!-- form-group// -->
@@ -135,7 +142,8 @@
 					</div>
 					<br>
 					<p class="text-center">
-						Já tem uma conta? <a th:href="@{/acesso/login}" href="#">Logue aqui!</a>
+						Já tem uma conta? <a th:href="@{/acesso/login}" href="#">Logue
+							aqui!</a>
 					</p>
 				</form>
 			</article>
