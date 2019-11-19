@@ -20,34 +20,6 @@
 	crossorigin="anonymous"></script>
 
 <head>
-<style type="text/css">
-body {
-	background: #B8850B;
-	padding-top: 30px;
-}
-
-.main-section {
-	padding: 15px;
-	background: #f1f1f1;
-}
-
-.custom-file-control::after {
-	content: "Choose file...";
-}
-
-.btn-custom {
-	padding: 1px 15px 3px 2px;
-	border-radius: 50px;
-}
-
-.btn-icon {
-	padding: 8px;
-	background: #FFFFFF;
-}
-</style>
-
-
-
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -60,30 +32,32 @@ body {
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/telaPrincipal.css}">
+<style type="text/css">
+	.tableLines{
+		color: white !important;
+	}
+	#headerTable{
+		text-align: center;
+	}
+	
+</style>
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div
-				class="offset-lg-2 col-lg-8 col-sm-8 col-8 border rounded main-section">
-				<h3 class="text-center text-inverse">Formulario Adicionar Tema</h3>
-				<hr>
-				<form class="container" id="needs-validation" novalidate
-					th:action="@{/admin/criarTema}" method="post">
-					<div class="row">
-						<div class="col-lg-6 col-sm-6 col-12">
-							<div class="form-group" style="display: inline-block !important;">
-								<input type="text" class="form-control" 
-								placeholder="Nome do Tema" th:name="nomeTema">
-								<button class="btn btn-info" type="submit">
-									<i class="fas fa-plus-square"
-										style="width: 18px; height: 18px;"></i>
-								</button>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
+		<div style="text-align: center;">
+			<br>
+			<hr style="color: #fff; background-color: #fff;">
+			<form th:object="${tema}" th:action="@{/admin/criarTema}"
+				method="post" class="form1">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Adicionar um tema"
+						th:field="*{nome}">
+					<button class="btn btn-dark" type="submit">
+						<i class="fas fa-plus-square" style="width: 18px; height: 18px;"></i>
+					</button>
+				</div>
+			</form>
 		</div>
 	</div>
 	<div th:replace="fragments/alert :: alert"></div>
@@ -91,21 +65,22 @@ body {
 	<br>
 
 	<table class="table" th:if="${listaTema != null} ">
+		<h3 id="headerTable">Temas</h3>
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">TEMA_ID</th>
-				<th scope="col">NOME TEMA</th>
-				<th scope="col">OPERAÇÕES</th>
+				<th scope="col">ID</th>
+				<th scope="col">TEMA</th>
+				<th scope="col">EXCLUÍR</th>
 			</tr>
 		</thead>
 		<tbody>
 
 			<tr th:each="temaa : ${listaTema}">
-				<td th:text="${temaa.id}"></td>
-				<td th:text="${temaa.tema}"></td>
+				<td th:text="${temaa.id}" class="tableLines"></td>
+				<td th:text="${temaa.nome}" class="tableLines"></td>
 				<td><a type="button"
 					th:href="@{/admin/removerTema/{id}(id=${temaa.id})}"
-					class="btn btn-danger">Remover</a></td>
+					class="btn btn-danger tableLines">&nbsp;&nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
 			</tr>
 
 
@@ -120,20 +95,5 @@ body {
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 		crossorigin="anonymous"></script>
-	<script type="text/javascript">
-		(function() {
-			'use strict';
-			window.addEventListener('load', function() {
-				var form = document.getElementById('needs-validation');
-				form.addEventListener('submit', function(event) {
-					if (form.checkValidity() === false) {
-						event.preventDefault();
-						event.stopPropagation();
-					}
-					form.classList.add('was-validated');
-				}, false);
-			}, false);
-		})();
-	</script>
 </body>
 </html>

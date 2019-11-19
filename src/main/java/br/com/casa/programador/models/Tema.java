@@ -26,20 +26,20 @@ public class Tema {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(name = "tem_tema")
-	private String tema;
+	@Column(name = "tem_nome")
+	private String nome;
 
 
 	@ManyToMany(mappedBy = "listaTemas", cascade = {CascadeType.ALL})
 	private List<Inscrito> listaInscrito = new ArrayList<>();
 //	private List<PublicacaoTema> pubTema;
 
-	public String getTema() {
-		return tema;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setTema(String tema) {
-		this.tema = tema;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public void adicionarInscrito(Inscrito insc) {

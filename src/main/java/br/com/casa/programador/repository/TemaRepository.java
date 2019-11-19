@@ -10,8 +10,8 @@ import br.com.casa.programador.models.Tema;
 import br.com.casa.programador.models.users.Pessoa;
 
 public interface TemaRepository extends JpaRepository<Tema, Integer>{
-	@Query("SELECT t FROM Tema t where t.tema = :tema")
-	public Tema findByTema(@Param("tema") String tema);
+	@Query("SELECT t FROM Tema t where t.nome = :nome")
+	public Tema findByNome(@Param("nome") String nome);
 	
 	@Query("SELECT t FROM Tema t")
 	public List<Tema> findAllByTema();

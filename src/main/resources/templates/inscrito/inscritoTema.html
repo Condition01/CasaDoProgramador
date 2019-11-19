@@ -41,8 +41,8 @@
 					<div class="form-group" th:if="${listaTema != null}">
 						<select class="custom-select" th:name="tema"
 							style="max-width: 250px;">
-							<option th:each="temaa : ${listaTema}" th:value="${temaa.tema}"
-								th:text="${temaa.tema}"></option>
+							<option th:each="temaa : ${listaTema}" th:value="${temaa.nome}"
+								th:text="${temaa.nome}"></option>
 						</select>
 						<button type="submit" class="btn btn-light">
 							<i class="fas fa-plus" style="width: 20px; height: 20px; color: black !important;"></i>
@@ -61,7 +61,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="temau : ${listaTemaUsuario}" >
-								<td th:text="${temau.tema}"></td>
+								<td th:text="${temau.nome}"></td>
 								<td><a aria-label="Left Align" th:href="@{/inscrito/removerTema/{id}(id=${temau.id})}"> 
 									<i class="fas fa-trash" style="width: 30px;height: 30px;"></i>
 								</a></td>

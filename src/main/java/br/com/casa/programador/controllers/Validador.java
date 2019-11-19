@@ -65,7 +65,7 @@ public class Validador {
 		boolean valido = true;
 		List<Tema> listaTemas = inscrito.getListaTemas();
 		for(Tema t : listaTemas) {
-			if(t.getTema().equals(tema.getTema())) {
+			if(t.getNome().equals(tema.getNome())) {
 				valido = false;
 			}
 		}

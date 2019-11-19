@@ -82,15 +82,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/criarTema", method= RequestMethod.GET)
-	public String telaCriarTema(Model model) {
-		
+	public String telaCriarTema(@ModelAttribute("tema")Tema tema,Model model) {
 		List<Tema> listaTema = new ArrayList<>();
 		listaTema = tRepository.findAll();
 		for(Tema t: listaTema) {
-			System.out.println(t.getTema()+ " " +t.getId());
+			System.out.println(t.getNome()+ " " +t.getId());
 		}
+		model.addAttribute("tema", tema);
 		model.addAttribute("listaTema", listaTema);
-		
 		return "admin/telaCriarTema";
 	}
 	
@@ -102,16 +101,19 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/criarTema", method= RequestMethod.POST)
-	public String telaCriarTema(@RequestParam("nomeTema") String nomeTema, Model model, RedirectAttributes mensagem) {
-		Tema tema2 = tRepository.findByTema(nomeTema);
-		if(nomeTema.equals(tema2.getTema())) {
+	public String telaCriarTema(@ModelAttribute("tema") Tema tema, Model model, RedirectAttributes mensagem) {
+		Tema tema2 = tRepository.findByNome(tema.getNome());
+		if(tema2 != null) {
 			mensagem.addFlashAttribute("mensagemFail", "Já existe um tema com este nome");
 		} else {
-			Tema t = new Tema();
-			t.setTema(nomeTema);
-			tRepository.save(t);
+			tRepository.save(tema);
 		}
 		return "redirect:/admin/criarTema";
+	}
+	
+	@ModelAttribute("tema")
+	public Tema novoTema() {
+		return new Tema();
 	}
 
 }

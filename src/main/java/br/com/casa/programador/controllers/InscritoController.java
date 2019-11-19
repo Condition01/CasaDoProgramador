@@ -153,7 +153,7 @@ public class InscritoController {
 
 	@RequestMapping(value = "/inscritoTema", method = RequestMethod.POST)
 	public String inscritoTema(@RequestParam("tema") String tema, Model model, RedirectAttributes mensagem) {
-		Tema t = tRepository.findByTema(tema);
+		Tema t = tRepository.findByNome(tema);
 		Inscrito inscrito = iRepository.findById(101).get();
 		if (!validador.validaAdicaoTema(inscrito, t)) {
 			mensagem.addFlashAttribute("mensagemFail", "Não é possivel adicionar um tema ja existente");
