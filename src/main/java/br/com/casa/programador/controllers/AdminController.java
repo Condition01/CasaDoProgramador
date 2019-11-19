@@ -56,7 +56,6 @@ public class AdminController {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(data);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			return date;

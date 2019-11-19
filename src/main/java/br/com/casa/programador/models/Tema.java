@@ -19,25 +19,28 @@ import br.com.casa.programador.models.users.Inscrito;
 
 @Entity
 @Table(name = "tbl_tema")
-public class Tema{
-	
+public class Tema {
+
 	@Id
 	@Column(name = "tem_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@Column(name = "tem_tema")
 	private String tema;
-	
-	@ManyToMany
-	@JoinTable(name = "tbl_inscrito_tema", 
-	joinColumns = {@JoinColumn (referencedColumnName = "tem_id")}, 
-	inverseJoinColumns = {@JoinColumn(referencedColumnName = "pes_pessoa")})
+
+
+	@ManyToMany(mappedBy = "listaTemas", cascade = {CascadeType.ALL})
 	private List<Inscrito> listaInscrito = new ArrayList<>();
 //	private List<PublicacaoTema> pubTema;
-	
-	@OneToOne(mappedBy = "tema")
-	Publicacao pub;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getTema() {
 		return tema;
@@ -46,9 +49,13 @@ public class Tema{
 	public void setTema(String tema) {
 		this.tema = tema;
 	}
-	
-	public void adicionarInscrito(Inscrito insc){
+
+	public void adicionarInscrito(Inscrito insc) {
 		this.listaInscrito.add(insc);
+	}
+	
+	public void removerInscrito(Inscrito insc) {
+		this.listaInscrito.remove(insc);
 	}
 
 }

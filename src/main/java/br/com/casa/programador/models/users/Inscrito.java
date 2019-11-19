@@ -26,7 +26,10 @@ public class Inscrito extends Pessoa{
 	@Column(name = "ins_nickname")
 	private String nickname;
 	
-	@ManyToMany(mappedBy = "listaInscrito")
+	@ManyToMany
+	@JoinTable(name = "tbl_inscrito_tema",  joinColumns = {
+			@JoinColumn(referencedColumnName = "pes_pessoa") }, inverseJoinColumns = {
+					@JoinColumn(referencedColumnName = "tem_id") })
 	private List<Tema> listaTemas = new ArrayList<>();
 
 	public String getNickname() {
@@ -43,6 +46,28 @@ public class Inscrito extends Pessoa{
 
 	public void setListaTemas(List<Tema> listaTemas) {
 		this.listaTemas = listaTemas;
+	}
+	
+	public void adicionarTema(Tema tema) {
+		this.listaTemas.add(tema);
+	}
+	
+	public void removerTema(Tema tema) {
+		this.listaTemas.remove(tema);
+		//this.listaTemas.remove(this.listaTemas.stream().filter(n -> n.getId()==tema.getId()));
+	}
+	
+	public void removerTema(int id) {
+		Tema tema = null;
+		for(Tema t : this.listaTemas) {
+			if(t.getId() == id) {
+				tema = t;
+			}
+		}
+		if(tema!=null) {
+			System.out.println("removido!");
+			this.listaTemas.remove(tema);
+		}
 	}
 
 }

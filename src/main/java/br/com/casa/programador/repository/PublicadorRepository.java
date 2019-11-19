@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 import br.com.casa.programador.models.users.Publicador;
 
 @Repository
-public interface PublicadorRepository extends JpaRepository<Publicador, Integer>{
-	
-}
+public interface PublicadorRepository extends JpaRepository<Publicador, Integer>{}
