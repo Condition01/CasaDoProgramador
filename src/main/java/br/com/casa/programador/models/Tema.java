@@ -58,4 +58,30 @@ public class Tema {
 		this.listaInscrito.remove(insc);
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Inscrito> getListaInscrito() {
+		return listaInscrito;
+	}
+
+	public void setListaInscrito(List<Inscrito> listaInscrito) {
+		this.listaInscrito = listaInscrito;
+	}
+
+	public Publicacao getPub() {
+		return pub;
+	}
+
+	public void setPub(Publicacao pub) {
+		this.pub = pub;
+	}
+
+	
+	
 }
