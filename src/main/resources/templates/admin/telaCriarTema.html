@@ -2,113 +2,115 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-<head>
 <meta charset="utf-8">
-	<style type="text/css">
-	body{
-      background: #B8850B;
-      padding-top: 30px;
-    }
-	.main-section{
-		padding: 15px;
-		background:#f1f1f1;
-	}
-	.custom-file-control::after {
-  		content: "Choose file...";
-	}
-	
- 	 .btn-custom{
-		padding: 1px 15px 3px 2px;
-		border-radius: 50px;	
-	}
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/telaPrincipal.css}">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+	integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+	integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+	crossorigin="anonymous"></script>
 
-	.btn-icon{
-	    padding: 8px;
-		background: #FFFFFF;
-	}
-	
-	</style>
-	
-	
+<head>
+<style type="text/css">
+body {
+	background: #B8850B;
+	padding-top: 30px;
+}
 
- 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+.main-section {
+	padding: 15px;
+	background: #f1f1f1;
+}
+
+.custom-file-control::after {
+	content: "Choose file...";
+}
+
+.btn-custom {
+	padding: 1px 15px 3px 2px;
+	border-radius: 50px;
+}
+
+.btn-icon {
+	padding: 8px;
+	background: #FFFFFF;
+}
+</style>
+
+
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
-<body> 
-<div class="container">
-    <div class="row">
-      <div class="offset-lg-2 col-lg-8 col-sm-8 col-8 border rounded main-section">
-        <h3 class="text-center text-inverse">Formulario Adicionar Tema</h3>
-        <hr>
-        <form class="container" id="needs-validation" novalidate th:action="@{/admin/criarTema}"
-         th:object="${tema}" method ="post">
-          <div class="row">
-            <div class="col-lg-6 col-sm-6 col-12">
-               <div class="form-group">
-                <label class="text-inverse" for="validationCustom01">ID_Tema</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="ID_TEMA" value="idTema" required disabled>
-              </div>
-            </div>
-            <div class="col-lg-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label class="text-inverse" for="validationCustom02">Nome do Tema</label>
-                <input type="text" class="form-control" id="validationCustom02" placeholder="Nome do Tema" value="nomeTema" required>
-              </div>  
-            </div>
-          </div>
-         
-            
-         
-          <div class="row">
-            <div class="col-lg-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label class="custom-file">
-                  <input type="file" id="file" class="form-control custom-file-input" required>
-                  <span class="custom-file-control"></span>
-                  <div class="invalid-feedback">
-                  </div>
-                </label>
-              </div>  
-            </div>
-            
-          
-          <div class="row">
-            <div class="col-lg-12 col-sm-12 col-12 text-center">
-                <button  class="btn btn-info" type="submit">  + </i>
-                  </button>
-            </div>
-          </div>  
-        </form>
-      </div>
-    </div>  
-</div>
+<body>
+	<div class="container">
+		<div class="row">
+			<div
+				class="offset-lg-2 col-lg-8 col-sm-8 col-8 border rounded main-section">
+				<h3 class="text-center text-inverse">Formulario Adicionar Tema</h3>
+				<hr>
+				<form class="container" id="needs-validation" novalidate
+					th:action="@{/admin/criarTema}" th:object="${tema}" method="post">
+					<div class="row">
+						<div class="col-lg-6 col-sm-6 col-12">
+							<div class="form-group" style="display: inline-block !important;">
+								 <input type="text" class="form-control"
+									id="validationCustom02" placeholder="Nome do Tema" required>
+									<button class="btn btn-info" type="submit" th:field="*{tema}">
+									<i class="fas fa-plus-square"
+										style="width: 18px; height: 18px;"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-<br>
-<br>
+	<br>
+	<br>
 
-	<table class="table" >
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">ID_TEMA</th>
-      <th scope="col">NOME TEMA</th>
-      <th scope="col">OPERAÇÕES</th>
-    </tr>
-  </thead>
-  <tbody>
-  			
+	<table class="table" th:if="${listaTema != null} ">
+		<thead class="thead-dark">
 			<tr>
-				<th scope="row">1</th>
-				<td>Mark</td>
-				<td>
-				<button type="button" class="btn btn-danger">Remover</button>
-				</td>
+				<th scope="col">TEMA_ID</th>
+				<th scope="col">NOME TEMA</th>
+				<th scope="col">OPERAÇÕES</th>
 			</tr>
-			
-			
+		</thead>
+		<tbody>
+
+			<tr th:each="temaa : ${listaTema}">
+				<td th:text="${temaa.id}"></td>
+				<td th:text="${temaa.tema}"></td>
+				<td><a type="button"
+					th:href="@{/admin/removerTema/{id}(id=${temaa.id})}"
+					class="btn btn-danger">Remover</a></td>
+			</tr>
+
+
 		</tbody>
-</table>
+	</table>
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -118,20 +120,20 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 		crossorigin="anonymous"></script>
-		<script type="text/javascript">
+	<script type="text/javascript">
 		(function() {
-		    'use strict';
-		    window.addEventListener('load', function() {
-		      var form = document.getElementById('needs-validation');
-		      form.addEventListener('submit', function(event) {
-		        if (form.checkValidity() === false) {
-		          event.preventDefault();
-		          event.stopPropagation();
-		        }
-		        form.classList.add('was-validated');
-		      }, false);
-		    }, false);
-		  })();
-		</script>
+			'use strict';
+			window.addEventListener('load', function() {
+				var form = document.getElementById('needs-validation');
+				form.addEventListener('submit', function(event) {
+					if (form.checkValidity() === false) {
+						event.preventDefault();
+						event.stopPropagation();
+					}
+					form.classList.add('was-validated');
+				}, false);
+			}, false);
+		})();
+	</script>
 </body>
 </html>
