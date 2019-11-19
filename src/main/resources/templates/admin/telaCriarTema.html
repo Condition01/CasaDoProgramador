@@ -69,13 +69,13 @@ body {
 				<h3 class="text-center text-inverse">Formulario Adicionar Tema</h3>
 				<hr>
 				<form class="container" id="needs-validation" novalidate
-					th:action="@{/admin/criarTema}" th:object="${tema}" method="post">
+					th:action="@{/admin/criarTema}" method="post">
 					<div class="row">
 						<div class="col-lg-6 col-sm-6 col-12">
 							<div class="form-group" style="display: inline-block !important;">
-								 <input type="text" class="form-control"
-									id="validationCustom02" placeholder="Nome do Tema" required>
-									<button class="btn btn-info" type="submit" th:field="*{tema}">
+								<input type="text" class="form-control" 
+								placeholder="Nome do Tema" th:name="nomeTema">
+								<button class="btn btn-info" type="submit">
 									<i class="fas fa-plus-square"
 										style="width: 18px; height: 18px;"></i>
 								</button>
@@ -86,7 +86,7 @@ body {
 			</div>
 		</div>
 	</div>
-
+	<div th:replace="fragments/alert :: alert"></div>
 	<br>
 	<br>
 
