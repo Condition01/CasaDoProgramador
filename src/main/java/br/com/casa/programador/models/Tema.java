@@ -34,14 +34,6 @@ public class Tema {
 	private List<Inscrito> listaInscrito = new ArrayList<>();
 //	private List<PublicacaoTema> pubTema;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getTema() {
 		return tema;
 	}
@@ -73,15 +65,5 @@ public class Tema {
 	public void setListaInscrito(List<Inscrito> listaInscrito) {
 		this.listaInscrito = listaInscrito;
 	}
-
-	public Publicacao getPub() {
-		return pub;
-	}
-
-	public void setPub(Publicacao pub) {
-		this.pub = pub;
-	}
-
-	
 	
 }
