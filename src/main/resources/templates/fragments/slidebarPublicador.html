@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Slide-bar inscrito</title>
+</head>
+<body>
+	<nav id="sidebar" th:fragment="slidebarPublicador">
+		<div class="sidebar-header">
+			<h3>Casa do Programador</h3>
+			<strong><img alt="logo" width="60px" height="52px"
+				th:src="@{/images/logo.png}"></strong>
+		</div>
+
+		<ul class="list-unstyled components">
+			<li><a href="#" th:href="@{/publicador/acessoPublicador}"> <i class="fas fa-user"></i>
+					Inicio
+			</a></li>
+			<li><a href="#" th:href="@{/publicador/publicadorEditar}"> <i class="fas fa-edit"></i>
+					Editar
+			</a></li>
+			<li><a href="#" th:href="@{/publicador/alterarSenha}"><i class="fas fa-unlock-alt"></i></i>
+					Alterar Senha </a></li>
+			<li><a href="#" th:href="@{/editor/editar}"><i class="fas fa-file-word"></i> Criar
+					publicação </a></li>
+		</ul>
+	</nav>
+</body>
+</html>

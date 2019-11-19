@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Acesso Publicador</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/telaPrincipal.css}">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+	integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+	integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+	crossorigin="anonymous"></script>
+<style type="text/css">
+.pub {
+	display: inline-block;
+}
+</style>
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- Sidebar Inscrito  -->
+		<nav th:replace="fragments/slidebarPublicador :: slidebarPublicador"></nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+			<nav th:replace="fragments/topbarPublicador :: topbarPublicador"></nav>
+
+			<div class="conteudo">
+				<h1>Bem vindo Publicador!</h1>
+				<div th:if="${publicador.nPublicacoes &lt; 15}">
+					<h3 th:text="${publicador.nPublicacoes}" class="pub"></h3>
+					<h3 class="pub">Publicações</h3>
+					<h3 class="pub">NIVEL NOOB</h3>
+				</div>
+				<div class="publicacoes"
+					th:if="${publicador.nPublicacoes &gt; 14 and publicador.nPublicacoes &lt; 50}">
+					<h3 th:text="${publicador.nPublicacoes}" class="pub">
+						Publicações</h3>
+					<h3 class="pub">Publicações</h3>
+					<h3 class="pub">NIVEL BOLADO</h3>
+				</div>
+				<div class="publicacoes" th:if="${publicador.nPublicacoes &gt; 49}">
+					<h3 th:text="${publicador.nPublicacoes}" class="pub">
+						Publicações</h3>
+					<h3 class="pub">Publicações</h3>
+					<h3 class="pub">NIVEL SUPREMO</h3>
+				</div>
+				<img alt="publisher.png" th:src="@{/images/publisher.png}"
+					height="233" width="200">
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<!-- jQuery CDN - Slim version (=without AJAX) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<!-- Popper.JS -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+		crossorigin="anonymous"></script>
+	<!-- Bootstrap JS -->
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+		crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
+</body>
+
+</html>
