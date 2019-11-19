@@ -2,8 +2,10 @@ package br.com.casa.programador.controllers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -21,6 +23,8 @@ import br.com.casa.programador.enums.Sexo;
 import br.com.casa.programador.models.users.Publicador;
 import br.com.casa.programador.repository.PessoaRepository;
 import br.com.casa.programador.repository.PublicadorRepository;
+import br.com.casa.programador.repository.TemaRepository;
+import br.com.casa.programador.models.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -32,6 +36,8 @@ public class AdminController {
 	@Autowired
 	PublicadorRepository puRepository;
 	
+	@Autowired
+	TemaRepository tRepository;
 	
 	@RequestMapping(value = "/cadastroPublicador", method= RequestMethod.GET)
 	public String adicionarPublicador(Publicador publicador, Model model) {
@@ -90,7 +96,16 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/criarTema", method= RequestMethod.GET)
-	public String telaCriarTema() {
+	public String telaCriarTema(Tema tema, Model model) {
+		
+		List<Tema> listaTema = new ArrayList<>();
+		listaTema = tRepository.findAll();
+		for(Tema t: listaTema) {
+			System.out.println(t.getTema());
+		}
+		model.addAttribute("tema", tema);
+		model.addAttribute("listaTema", listaTema);
+		
 		return "admin/telaCriarTema";
 	}
 	
