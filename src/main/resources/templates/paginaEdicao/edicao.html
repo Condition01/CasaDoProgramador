@@ -14,7 +14,6 @@
 			<div id="editorjs"></div>
 			<button style="text-align: center;">Salvar Artigo</button>
 		</div>
-
 	</div>
 	<!-- Header -->
 	<script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
@@ -85,7 +84,11 @@
 
         saveBtn.addEventListener('click', function(){
             editor.save().then((outputData) => {
-                console.log('Article data: ', outputData)
+            	  var xhr = new XMLHttpRequest();
+            	  xhr.open('POST', 'http://localhost:8080/salvarEdicao', true);
+            	  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            	  xhr.send(JSON.stringify(outputData));
+                console.log('Article data: ', JSON.stringify(outputData));
             }) .catch((error) => {
                 console.log('Saving failed', error)
             })

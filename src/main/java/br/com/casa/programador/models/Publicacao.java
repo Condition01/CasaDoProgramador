@@ -32,9 +32,6 @@ public class Publicacao{
 	@JoinColumn(name = "tem_id", referencedColumnName = "tem_id")
 	Tema tema; 
 	
-
-	
-	
 //	private List<Midia> midias;
 //
 //	private List<PublicacaoTema> publicacaoTema;
