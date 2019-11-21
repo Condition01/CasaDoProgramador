@@ -1,75 +1,77 @@
 package br.com.casa.programador.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_publicacao")
-public class Publicacao{
-	
-	@Id
-	@Column(name = "pub_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	
-	@Column(name="pub_titulo")
-	private String titulo;
-	
-	@Column(name="pub_descricao")
-	private String descricacao;
-	
-	@Column(name="pub_texto")
-	private String texto;
+public class Publicacao {
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "tem_id", referencedColumnName = "tem_id")
-	Tema tema; 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "pub_id")
+	private int id;
+
+	@Column(name = "pub_time")
+	private String time;
+
+	@Column(name = "pub_version")
+	private String version;
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "pub", cascade = CascadeType.ALL)
+	private List<Blocks> blocks = new ArrayList<>();
+
+	@Column(name = "pub_json")
+	private String json;
 	
-//	private List<Midia> midias;
-//
-//	private List<PublicacaoTema> publicacaoTema;
-	
-	public String getTitulo() {
-		return titulo;
+	public String getJson() {
+		return json;
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+
+	public void setJson(String json) {
+		this.json = json;
 	}
-	public String getDescricacao() {
-		return descricacao;
+
+	public String getTime() {
+		return time;
 	}
-	public void setDescricacao(String descricacao) {
-		this.descricacao = descricacao;
+
+	public void setTime(String time) {
+		this.time = time;
 	}
-	public String getTexto() {
-		return texto;
+
+	public List<Blocks> getBlocks() {
+		return blocks;
 	}
-	public void setTexto(String texto) {
-		this.texto = texto;
+
+	public void setBlocks(List<Blocks> blocks) {
+		this.blocks = blocks;
 	}
-//	public List<Midia> getMidias() {
-//		return midias;
-//	}
-//	public void setMidia(List<Midia> midias) {
-//		this.midias = midias;
-//	}
-//	public List<PublicacaoTema> getPublicacaoTema() {
-//		return publicacaoTema;
-//	}
-//	public void setPublicacaoTema(List<PublicacaoTema> publicacaoTema) {
-//		this.publicacaoTema = publicacaoTema;
-//	}
-//	public void setMidias(List<Midia> midias) {
-//		this.midias = midias;
-//	}
-	
-	
-	
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 }

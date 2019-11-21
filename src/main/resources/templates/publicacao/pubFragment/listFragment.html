@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="listFragment">
+		<ol th:case="'ordered'">
+			<div th:each="i : ${c.data.items}">
+				<li th:text="${i}"></li>
+			</div>
+		
+		</ol>
+		<ul th:case="'unordered'">
+			<div th:each="i : ${c.data.items}">
+				<li th:text="${i}"></li>
+			</div>
+		</ul>
+	</div>
+</body>
+</html>
