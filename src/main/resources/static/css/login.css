@@ -1,14 +1,15 @@
 @charset "ISO-8859-1";
+@import
+	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-@import url('https://fonts.googleapis.com/css?family=Numans');
 
 html, body {
 	background-image:
-		url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+		url('/images/wallpaper.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 100%;
-	font-family: 'Numans', sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -21,13 +22,18 @@ html, body {
 	margin-top: auto;
 	margin-bottom: auto;
 	width: 400px;
-	background-color: rgba(0, 0, 0, 0.5) !important;
+	background-color: rgba(0, 0, 0, 0.9) !important;
 }
+
 
 .social_icon span {
 	font-size: 60px;
 	margin-left: 10px;
-	color: #FFC312;
+	color: #602080;
+}
+
+.iten{
+	color: white !important;
 }
 
 .social_icon span:hover {
@@ -47,7 +53,7 @@ html, body {
 
 .input-group-prepend span {
 	width: 50px;
-	background-color: #FFC312;
+	background-color: #602080;
 	color: black;
 	border: 0 !important;
 }
@@ -69,8 +75,8 @@ input:focus {
 }
 
 .login_btn {
-	color: black;
-	background-color: #FFC312;
+	color: white;
+	background-color: #602080;
 	width: 100px;
 }
 

@@ -35,11 +35,9 @@
 	<div class="wrapper">
 		<!-- Sidebar Inscrito  -->
 		<nav th:replace="fragments/slidebarPublicador :: slidebarPublicador"></nav>
-
 		<!-- Page Content  -->
 		<div id="content">
 			<nav th:replace="fragments/topbarPublicador :: topbarPublicador"></nav>
-
 			<div class="conteudo">
 				<h1>Bem vindo Publicador!</h1>
 				<div th:if="${publicador.nPublicacoes &lt; 15}">

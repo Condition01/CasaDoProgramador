@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="pos-f-t" th:fragment="instructionBar">
+		<div class="collapse" id="navbarToggleExternalContent">
+			<div class="bg-dark p-4">
+				<h5 class="text-white h4">Instruções</h5>
+				<p class="text-muted">Use 'CRTL+SHIFT+C' para inserir codigos a
+					pagina</p>
+				<p class="text-muted">Use 'CRTL+SHIFT+M' para marcar texto</p>
+				<p class="text-muted">Use 'CRTL+SHIFT+X' para marcar texto com
+					código</p>
+				<p class="text-muted">Click no '+' à esquerda para selecionar tipo do
+					bloco(da linha)</p>
+				<p class="text-muted">Click nos '. . .' à direita para mover, exluir ou realizar 
+				outras opções de linha</p>
+				<p class="text-muted">Selecione um trecho de linha para
+					visualizar as caixas de opção</p>
+			</div>
+		</div>
+		<nav class="navbar navbar-dark bg-dark instrucoes">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarToggleExternalContent"
+				aria-controls="navbarToggleExternalContent" aria-expanded="false"
+				aria-label="Alterna navegação">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</nav>
+	</div>
+</body>
+</html>

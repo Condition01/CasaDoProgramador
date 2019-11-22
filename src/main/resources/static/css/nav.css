@@ -1,6 +1,6 @@
-
-.menu1:hover{
-	background-color:black !important;
+.navegacao{
+	background-color: #602080 !important;
 }
-
-
+.link{
+	font-weight: bolder;
+}

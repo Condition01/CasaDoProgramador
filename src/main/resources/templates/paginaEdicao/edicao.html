@@ -4,41 +4,66 @@
 <head>
 <meta charset="utf-8">
 <title>Criar edição!</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<link rel="stylesheet" th:href="@{/css/layoutBase.css}" />
+<link rel="stylesheet" th:href="@{/css/nav.css}" />
+<style type="text/css">
+.botaoSalvar {
+	text-align: center;
+}
+
+.instrucoes {
+	background-color: black !important;
+}
+</style>
 </head>
 <body>
-	<div class="ce-example">
-		<div id="header">
-			<h1 style="text-align: center;">HEADER</h1>
-		</div>
-		<div class="ce-example__content _ce-example__content--small">
+	<header th:replace="fragments/header :: cabecalho"></header>
+	<br>
+	<div th:replace="paginaEdicao/editFragment/instructionBar :: instructionBar"></div>
+	<br>
+	<div class="container conteudo">
+		<div class="ce-example">
+			<div id="header">
+				<h2 style="text-align: center;">Crie seu artigo aqui</h2>
+			</div>
 			<div id="editorjs"></div>
-			<button style="text-align: center;">Salvar Artigo</button>
-		</div>
-	</div>
-	<!-- Header -->
-	<script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
-	<!-- Image -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
-	<!-- List -->
-	<script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
-	<!-- Checklist -->
-	<script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>
-	<!-- Code -->
-	<script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
-	<!-- Embed -->
-	<script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
-	<!-- Table -->
-	<script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>
-	<!-- Marker -->
-	<script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
-	<!-- Link -->
-	<script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>
-	<!-- Inline Code -->
-	<script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script>
-	<script src="/dist/editor.js"></script>
+			<div class="botaoSalvar">
+				<button class="btn btn-dark btnSalvar" onclick="salvar()">SalvarArtigo</button>
+			</div>
 
-	<script>
+		</div>
+
+		<!-- Header -->
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+		<!-- Image -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
+		<!-- List -->
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
+		<!-- Checklist -->
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>
+		<!-- Code -->
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
+		<!-- Embed -->
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
+		<!-- Table -->
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>
+		<!-- Marker -->
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
+		<!-- Link -->
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>
+		<!-- Inline Code -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script>
+
+		<script src="/dist/editor.js"></script>
+		<script>
     
         const editor = new EditorJS({
             holder: 'editorjs',
@@ -80,9 +105,7 @@
             }
         });
 
-        let saveBtn = document.querySelector('button');
-
-        saveBtn.addEventListener('click', function(){
+       function salvar(){
             editor.save().then((outputData) => {
             	  var xhr = new XMLHttpRequest();
             	  xhr.open('POST', 'http://localhost:8080/salvarEdicao', true);
@@ -92,8 +115,19 @@
             }) .catch((error) => {
                 console.log('Saving failed', error)
             })
-        })
+        };
             
     </script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
 </body>
 </html>

@@ -31,7 +31,7 @@ public class PublicadorController {
 
 	@RequestMapping(value = "/acessoPublicador", method = RequestMethod.GET)
 	public String acessoPublicador(Publicador publicador, Model model) {
-		publicador = pRepository.findById(103).get();
+		publicador = pRepository.findById(1).get();
 		model.addAttribute("publicador", publicador);
 		return "publicador/telaPublicador";
 	}

@@ -22,7 +22,7 @@ public class PublicacaoController {
 
 	@RequestMapping(value = "/publicacao", method = RequestMethod.GET)
 	public String visualizarPublicacao(Model model) {
-		Publicacao publicacao = pubRepository.findById(1).get();
+		Publicacao publicacao = pubRepository.findById(55).get();
 		List<Blocks> conteudo = publicacao.getBlocks();
 		for(Blocks c : conteudo) {
 			System.out.println(c.getType());
