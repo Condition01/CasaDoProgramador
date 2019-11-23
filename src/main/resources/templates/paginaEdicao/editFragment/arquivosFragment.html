@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div style="text-align: center;" th:fragment="arquivosFragment">
+		<div class="input-group mb-3">
+			<div class="custom-file">
+				<input type="file" name="imagemGrande" class="custom-file-input inputGrupo" id="input1" />
+				<label class="custom-file-label" for="input1">Img Grande</label>
+			</div>
+		</div>
+		<div class="input-group mb-3">
+			<div class="custom-file">
+				<input type="file" name="imagemPequena" class="custom-file-input inputGrupo" id="input2" />
+				<label class="custom-file-label" for="input2">Img Pequena</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="text" placeholder="Nome do artigo"
+				name="nomeArtigo">
+		</div>
+	</div>
+</body>
+</html>

@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,7 +32,16 @@ public class Publicacao {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "pub", cascade = CascadeType.ALL)
 	private List<Blocks> blocks = new ArrayList<>();
 
-	@Column(name = "pub_json")
+	@Column(name = "pub_imagemPequena")
+	private String imagemPequenaUrl;
+	
+	@Column(name =  "pub_imgGrande")
+	private String imageGrandeUrl;
+	
+	@Column(name = "pub_nome")
+	private String nome;
+	
+	@Column(name = "pub_json", length = 4000)
 	private String json;
 	
 	public String getJson() {
@@ -74,4 +84,28 @@ public class Publicacao {
 		this.id = id;
 	}
 
+	public String getImagemPequenaUrl() {
+		return imagemPequenaUrl;
+	}
+
+	public void setImagemPequenaUrl(String imagemPequenaUrl) {
+		this.imagemPequenaUrl = imagemPequenaUrl;
+	}
+
+	public String getImageGrandeUrl() {
+		return imageGrandeUrl;
+	}
+
+	public void setImageGrandeUrl(String imageGrandeUrl) {
+		this.imageGrandeUrl = imageGrandeUrl;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 }

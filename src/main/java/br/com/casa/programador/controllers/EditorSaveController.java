@@ -23,12 +23,6 @@ public class EditorSaveController {
 	@Autowired
 	PublicacaoRepository pubRepository;
 	
-	@Autowired
-	DataRepository dRepository;
-	
-	@Autowired
-	BlockRepository bRepository;
-	
 	@PostMapping("/salvarEdicao")
 	public String salvar(@RequestBody String json) {
 		String jsonCopy = json;
