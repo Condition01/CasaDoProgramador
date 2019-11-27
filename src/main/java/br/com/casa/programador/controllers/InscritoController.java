@@ -1,5 +1,6 @@
 package br.com.casa.programador.controllers;
 
+import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -10,6 +11,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.casa.programador.enums.Sexo;
+import br.com.casa.programador.enums.StatusPessoa;
+import br.com.casa.programador.enums.TipoPessoa;
 import br.com.casa.programador.models.Tema;
 import br.com.casa.programador.models.TrocaSenha;
 import br.com.casa.programador.models.users.Inscrito;
@@ -60,6 +64,11 @@ public class InscritoController {
 		}
 		Date date = convertDate(data);
 		inscrito.setDatanasc(date);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		inscrito.setSenha(encoder.encode(inscrito.getSenha()));
+		inscrito.setConfirmaSenha(encoder.encode(inscrito.getConfirmaSenha()));
+		inscrito.setStatus(StatusPessoa.ATIVADO);
+		inscrito.settPessoa(TipoPessoa.USUARIO);
 		iRepository.save(inscrito);
 		return mostrarInscrito(inscrito);
 	}
@@ -132,8 +141,10 @@ public class InscritoController {
 
 	@RequestMapping(value = "/alterarSenha", method = RequestMethod.POST)
 	public String alterarSenha(@ModelAttribute("trocaSenha") @Valid TrocaSenha trocaSenha, BindingResult result,
-			Model model, Errors errors, RedirectAttributes mensagem) {
-		if(!validador.alterarSenha(trocaSenha, result, model, errors)) {
+			Model model, Errors errors,Principal principal, RedirectAttributes mensagem) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		trocaSenha.setSenha(encoder.encode(trocaSenha.getSenha()));
+		if(!validador.alterarSenha(trocaSenha, result, model, errors, principal.getName())) {
 			return alterarSenha(trocaSenha, model);
 		}
 		mensagem.addFlashAttribute("mensagem", "Senha alterada com sucesso!");

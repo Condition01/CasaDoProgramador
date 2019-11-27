@@ -57,11 +57,10 @@ public class Pessoa {
 	private String email;
 
 	@NotEmpty(message = "Por favor informar a senha")
-	@Size(min = 5, max = 20, message = "Senha deve conter entre 6 e 20 caracteres")
-	@Column(name = "pes_senha")
+	@Column(name = "pes_senha", length = 300)
 	private String senha;
 
-	@Column(name = "pes_confirma_senha")
+	@Column(name = "pes_confirma_senha", length = 300)
 	private String confirmaSenha;
 	
 	@Enumerated(EnumType.STRING)

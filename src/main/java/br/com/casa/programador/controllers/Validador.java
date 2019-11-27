@@ -7,6 +7,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -19,8 +22,14 @@ import br.com.casa.programador.models.users.Pessoa;
 import br.com.casa.programador.repository.PessoaRepository;
 
 public class Validador {
+	
 	@Autowired
 	PessoaRepository pRepository;
+	
+	@Bean
+	public PasswordEncoder passWordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 	
 	public boolean verificaErros(Pessoa pessoa, BindingResult result, String data, Errors errors) {
 		boolean verificarCadastro = emailJaCadastrado(pessoa.getEmail());
@@ -50,7 +59,7 @@ public class Validador {
 		if(result.hasErrors()) {
 			validado = false;
 		}
-		if(!p.getSenha().equals(trocaSenha.getSenha())) {
+		if(!passWordEncoder().matches(trocaSenha.getSenha(), p.getSenha())) {
 			errors.rejectValue("senha", "senha.invalida", "A senha não bate com a senha atual!");
 			validado = false;
 		}
@@ -74,14 +83,18 @@ public class Validador {
 	}
 	
 	public boolean alterarSenha(TrocaSenha trocaSenha, 
-			BindingResult result, Model model, Errors errors) {
-		Pessoa p = pRepository.findById(101).get();
+			BindingResult result, Model model, Errors errors, String email) {
+		Pessoa p = pRepository.findByEmail(email);
+//		System.out.println(passWordEncoder().matches(trocaSenha.getSenha(), p.getSenha()));
+		
 		if(verificaSenha(trocaSenha, result, p, errors)) {
-			p.setSenha(trocaSenha.getNovaSenha());
-			p.setConfirmaSenha(trocaSenha.getConfirmaSenha());
+			p.setSenha(passWordEncoder().encode(trocaSenha.getSenha()));
+			p.setConfirmaSenha(p.getSenha());
 			pRepository.save(p);
 			return true;
 		}
 		return false;
 	}
+	
+
 }

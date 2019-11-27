@@ -28,7 +28,7 @@
 	<div
 		th:replace="paginaEdicao/editFragment/instructionBar :: instructionBar"></div>
 	<br>
-	<form action="#" th:action="@{/publicacao/salvarPublicacao}"
+	<form action="#" th:action="@{/publicador/salvarPublicacao}"
 		enctype="multipart/form-data" method="post">
 		<div
 			th:replace="paginaEdicao/editFragment/arquivosFragment :: arquivosFragment"></div>
@@ -130,7 +130,7 @@
        function salvar(){
             editor.save().then((outputData) => {
             	  var xhr = new XMLHttpRequest();
-            	  xhr.open('POST', 'http://localhost:8080/publicacao/salvarEdicao', true);
+            	  xhr.open('POST', 'http://localhost:8080/publicador/salvarEdicao', true);
             	  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
             	  xhr.send(JSON.stringify(outputData));
                 console.log('Article data: ', JSON.stringify(outputData));
