@@ -7,16 +7,24 @@
 </head>
 <body>
 	<div style="text-align: center;" th:fragment="arquivosFragment">
+		<div class="input-group mb-3" th:if="${listaTema != null}">
+			<select class="custom-select" th:name="tema">
+				<option th:each="temaa : ${listaTema}" th:value="${temaa.nome}"
+					th:text="${temaa.nome}"></option>
+			</select>
+		</div>
 		<div class="input-group mb-3">
 			<div class="custom-file">
-				<input type="file" name="imagemGrande" class="custom-file-input inputGrupo" id="input1" />
-				<label class="custom-file-label" for="input1">Img Grande</label>
+				<input type="file" name="imagemGrande"
+					class="custom-file-input inputGrupo" id="input1" /> <label
+					class="custom-file-label" for="input1">Img Grande</label>
 			</div>
 		</div>
 		<div class="input-group mb-3">
 			<div class="custom-file">
-				<input type="file" name="imagemPequena" class="custom-file-input inputGrupo" id="input2" />
-				<label class="custom-file-label" for="input2">Img Pequena</label>
+				<input type="file" name="imagemPequena"
+					class="custom-file-input inputGrupo" id="input2" /> <label
+					class="custom-file-label" for="input2">Img Pequena</label>
 			</div>
 		</div>
 		<div class="form-group">

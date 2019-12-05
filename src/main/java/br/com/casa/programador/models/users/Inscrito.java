@@ -20,6 +20,7 @@ import br.com.casa.programador.models.Tema;
 @Table(name = "tbl_inscrito")
 public class Inscrito extends Pessoa{
 	
+	
 	@NotEmpty(message = "Nickname deve ser preenchido")
 	@NotNull(message = "Nickname deve ser preenchido")
 	@Size(max = 20, message = "Não deve exceder mais que 20 caracteres!")
@@ -29,7 +30,7 @@ public class Inscrito extends Pessoa{
 	@ManyToMany
 	@JoinTable(name = "tbl_inscrito_tema",  joinColumns = {
 			@JoinColumn(referencedColumnName = "pes_pessoa") }, inverseJoinColumns = {
-					@JoinColumn(referencedColumnName = "tem_id") })
+		@JoinColumn(referencedColumnName = "tem_id") })
 	private List<Tema> listaTemas = new ArrayList<>();
 
 	public String getNickname() {

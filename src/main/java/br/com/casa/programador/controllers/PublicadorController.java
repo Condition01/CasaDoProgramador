@@ -27,18 +27,22 @@ import com.google.gson.Gson;
 
 import br.com.casa.programador.models.Blocks;
 import br.com.casa.programador.models.Publicacao;
+import br.com.casa.programador.models.Tema;
 import br.com.casa.programador.models.TrocaSenha;
 import br.com.casa.programador.models.users.Inscrito;
 import br.com.casa.programador.models.users.Publicador;
 import br.com.casa.programador.repository.PublicacaoRepository;
 import br.com.casa.programador.repository.PublicadorRepository;
+import br.com.casa.programador.repository.TemaRepository;
 
 @Controller
 @RequestMapping("/publicador")
 public class PublicadorController {
 	
-	public static String uploadDirectory = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\imageUpload";
+	public static String uploadDirectory = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\images\\imageUpload";
+	public static String pathDirectory =  "/images/imageUpload/";
 
+	
 	private Publicacao pub;
 
 	@Autowired
@@ -49,6 +53,9 @@ public class PublicadorController {
 
 	@Autowired
 	PublicacaoRepository pubRepository;
+	
+	@Autowired
+	TemaRepository tRepository;
 
 
 	@RequestMapping(value = "/acessoPublicador", method = RequestMethod.GET)
@@ -129,15 +136,21 @@ public class PublicadorController {
 	public String salvarPublicacao(@RequestParam("imagemGrande") MultipartFile imagemGrande, 
 			@RequestParam("imagemPequena") MultipartFile imagemPequena,
 			@RequestParam("nomeArtigo") String nomeArtigo,
-			RedirectAttributes mensagem) {
+			RedirectAttributes mensagem, @RequestParam("tema") String nomeTema,
+			Principal principal) {
+		Tema tema = tRepository.findByNome(nomeTema);
+		tema.setPublicacao(pub);
+		pub.setTema(tema);
 		System.out.println("passou");
 		String imagemGrandeS = salvarArquivo(imagemGrande);
 		String imagemPequenaS = salvarArquivo(imagemPequena);
 		if (this.pub == null) {
 			mensagem.addFlashAttribute("mensagemFail", "publicacao não pode ser salva =(, por favor contate um administrador caso persista");
 		}else{
-			this.pub.setImageGrandeUrl(uploadDirectory + "\\" + imagemGrandeS);
-			this.pub.setImagemPequenaUrl(uploadDirectory + "\\" + imagemPequenaS);
+			Publicador publicador = pRepository.findByEmail(principal.getName());
+			publicador.setPublicacao(this.pub);
+			this.pub.setPublicador(publicador);
+			settingImages(imagemGrandeS, imagemPequenaS);
 			this.pub.setNome(nomeArtigo);
 			pubRepository.save(this.pub);
 			this.pub = null;
@@ -146,20 +159,29 @@ public class PublicadorController {
 		return "redirect:/editor/editar";
 	}
 
+	private void settingImages(String imagemGrandeS, String imagemPequenaS) {
+		if(!imagemGrandeS.equals("")) {
+			this.pub.setImageGrandeUrl(pathDirectory + imagemGrandeS);
+		}
+		if(!imagemPequenaS.equals("")) {
+			this.pub.setImagemPequenaUrl(pathDirectory + imagemPequenaS);
+		}
+	}
+
 	@RequestMapping(value = "/salvarPublicacao", method = RequestMethod.GET)
 	public String salvarPublicacao() {
 		return "paginaEdicao/salvarEdicao";
 	}
 
 	private String salvarArquivo(MultipartFile file) {
-		StringBuilder fileName = new StringBuilder();
 		Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
-		fileName.append(file.getOriginalFilename());
-		try {
-			Files.write(fileNameAndPath, file.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(!file.getOriginalFilename().equals("")) { //se o usuario nao setar uma imagem para a publicação, nao tem pq tentar salvar no sistema de arquivos
+			try {
+				Files.write(fileNameAndPath, file.getBytes());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return file.getOriginalFilename();
 	}

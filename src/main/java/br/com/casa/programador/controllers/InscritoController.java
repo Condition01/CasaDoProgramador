@@ -95,13 +95,10 @@ public class InscritoController {
 	}
 
 	@RequestMapping(value = "/inscritoEditar", method = RequestMethod.GET)
-	public String inscritoEditar(@ModelAttribute("inscrito") Inscrito inscrito, Model model) {
+	public String inscritoEditar(@ModelAttribute("inscrito") Inscrito inscrito, Model model, Principal principal) {
 		if (inscrito.getEmail() == null) {
-			Optional<Inscrito> novoInscrito = iRepository.findById(101);
-			if (novoInscrito.isPresent()) {
-				inscrito = novoInscrito.get();
-				model.addAttribute("inscrito", inscrito);
-			}
+			inscrito = iRepository.findByEmail(principal.getName());
+			model.addAttribute("inscrito", inscrito);
 		}
 		System.out.println(inscrito.getEmail());
 		System.out.println(inscrito.getSexo());
@@ -110,21 +107,21 @@ public class InscritoController {
 
 	@RequestMapping(value = "/inscritoEditar", method = RequestMethod.POST)
 	public String inscritoEditar(@ModelAttribute("inscrito") Inscrito inscrito, BindingResult result, Model model,
-			RedirectAttributes mensagem) {
+			RedirectAttributes mensagem, Principal principal) {
 		if (result.hasErrors()) {
-			return inscritoEditar(inscrito, model);
+			return inscritoEditar(inscrito, model, principal);
 		}
-		inscrito = inscritoTranspassado(inscrito);
+		inscrito = inscritoTranspassado(inscrito, principal);
 		iRepository.save(inscrito);
 		mensagem.addFlashAttribute("mensagem", "Alterações feitas com sucesso");
 		return "redirect:/inscrito/inscritoEditar";
 	}
 
-	public Inscrito inscritoTranspassado(Inscrito insc) {
-		Optional<Inscrito> inscritoAntigo = iRepository.findById(insc.getId());
+	public Inscrito inscritoTranspassado(Inscrito insc, Principal principal) {
+		Inscrito inscritoAntigo = iRepository.findByEmail(principal.getName());
 		Inscrito inscrito;
-		if (inscritoAntigo.isPresent()) {
-			inscrito = inscritoAntigo.get();
+		if (inscritoAntigo != null) {
+			inscrito = inscritoAntigo;
 			inscrito.setDatanasc(insc.getDatanasc());
 			inscrito.setNome(insc.getNome());
 			inscrito.setNickname(insc.getNickname());
@@ -141,10 +138,10 @@ public class InscritoController {
 
 	@RequestMapping(value = "/alterarSenha", method = RequestMethod.POST)
 	public String alterarSenha(@ModelAttribute("trocaSenha") @Valid TrocaSenha trocaSenha, BindingResult result,
-			Model model, Errors errors,Principal principal, RedirectAttributes mensagem) {
+			Model model, Errors errors, Principal principal, RedirectAttributes mensagem) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		trocaSenha.setSenha(encoder.encode(trocaSenha.getSenha()));
-		if(!validador.alterarSenha(trocaSenha, result, model, errors, principal.getName())) {
+		if (!validador.alterarSenha(trocaSenha, result, model, errors, principal.getName())) {
 			return alterarSenha(trocaSenha, model);
 		}
 		mensagem.addFlashAttribute("mensagem", "Senha alterada com sucesso!");
@@ -152,9 +149,9 @@ public class InscritoController {
 	}
 
 	@RequestMapping(value = "/inscritoTema", method = RequestMethod.GET)
-	public String inscritoTema(Tema tema, Model model) {
+	public String inscritoTema(Tema tema, Model model, Principal principal) {
 		model.addAttribute("tema", tema);
-		Inscrito inscrito = iRepository.findById(101).get();
+		Inscrito inscrito = iRepository.findByEmail(principal.getName());
 		List<Tema> listaTema = tRepository.findAllByTema();
 		List<Tema> listaTemaUsuario = inscrito.getListaTemas();
 		model.addAttribute("listaTema", listaTema);
@@ -163,9 +160,9 @@ public class InscritoController {
 	}
 
 	@RequestMapping(value = "/inscritoTema", method = RequestMethod.POST)
-	public String inscritoTema(@RequestParam("tema") String tema, Model model, RedirectAttributes mensagem) {
+	public String inscritoTema(@RequestParam("tema") String tema, Model model, RedirectAttributes mensagem, Principal principal) {
 		Tema t = tRepository.findByNome(tema);
-		Inscrito inscrito = iRepository.findById(101).get();
+		Inscrito inscrito = iRepository.findByEmail(principal.getName());
 		if (!validador.validaAdicaoTema(inscrito, t)) {
 			mensagem.addFlashAttribute("mensagemFail", "Não é possivel adicionar um tema ja existente");
 			return "redirect:/inscrito/inscritoTema";
@@ -178,8 +175,8 @@ public class InscritoController {
 	}
 
 	@GetMapping(value = "/removerTema/{id}")
-	public String removerTema(@PathVariable("id") int id) {
-		Inscrito inscrito = iRepository.findById(101).get();
+	public String removerTema(@PathVariable("id") int id, Principal principal) {
+		Inscrito inscrito = iRepository.findByEmail(principal.getName());
 		inscrito.removerTema(id);
 		iRepository.save(inscrito);
 		return "redirect:/inscrito/inscritoTema";

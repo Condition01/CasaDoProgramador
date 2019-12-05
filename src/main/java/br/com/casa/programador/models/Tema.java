@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,12 +29,14 @@ public class Tema {
 
 	@Column(name = "tem_nome")
 	private String nome;
-
-
+	
 	@ManyToMany(mappedBy = "listaTemas", cascade = {CascadeType.ALL})
 	private List<Inscrito> listaInscrito = new ArrayList<>();
 //	private List<PublicacaoTema> pubTema;
 
+	@OneToOne(mappedBy = "tema", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Publicacao publicacao;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -64,6 +67,14 @@ public class Tema {
 
 	public void setListaInscrito(List<Inscrito> listaInscrito) {
 		this.listaInscrito = listaInscrito;
+	}
+
+	public Publicacao getPublicacao() {
+		return publicacao;
+	}
+
+	public void setPublicacao(Publicacao publicacao) {
+		this.publicacao = publicacao;
 	}
 	
 }

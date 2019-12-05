@@ -26,4 +26,5 @@ public class RelatorioController {
 	public String relatorioPubliacao() {
 		return "relatorios/relatorioPublicacao";
 	}
+	
 }

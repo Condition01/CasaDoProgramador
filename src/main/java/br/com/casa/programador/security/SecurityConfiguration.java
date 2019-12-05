@@ -40,14 +40,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.hasAnyRole(TipoPessoa.PUBLICADOR.toString(), TipoPessoa.ADMINISTRADOR.toString())
 		.antMatchers("/imageUpload/**")
 		.hasAnyRole(TipoPessoa.PUBLICADOR.toString(), TipoPessoa.ADMINISTRADOR.toString())
+		.antMatchers("/imageUpload")
+		.hasAnyRole(TipoPessoa.PUBLICADOR.toString(), TipoPessoa.ADMINISTRADOR.toString())
 		.antMatchers("/editor/**")
 		.hasAnyRole(TipoPessoa.PUBLICADOR.toString(), TipoPessoa.ADMINISTRADOR.toString())
 		.antMatchers("/").permitAll().and().formLogin().loginPage("/login")
 		.usernameParameter("email")
-		.passwordParameter("senha");
-		
-		 http
+		.passwordParameter("senha")
+		.defaultSuccessUrl("/home").and().logout();
+
+		http
 	      .csrf().disable();
+		
 	}
 	
 	@Bean

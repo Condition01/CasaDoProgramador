@@ -36,14 +36,14 @@
 					<input name="nome" class="form-control" placeholder="Nome completo"
 						type="text" th:field="*{nome}">
 				</div>
-
 				<!-- form-group// -->
 
 				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
 					class="text-danger"></span>
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text icon"> <i class="fa fa-envelope"></i>
+						<span class="input-group-text icon"> <i
+							class="fa fa-envelope"></i>
 						</span>
 					</div>
 					<input name="" class="form-control" placeholder="Endereço de email"
@@ -56,8 +56,8 @@
 					th:errors="*{datanasc}" class="text-danger"></span>
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text icon"> <i class="fa fa-calendar"
-							aria-hidden="true"></i>
+						<span class="input-group-text icon"> <i
+							class="fa fa-calendar" aria-hidden="true"></i>
 						</span>
 					</div>
 					<input name="" class="form-control"
@@ -68,12 +68,12 @@
 
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text icon"> <i class="fa fa-venus-mars"
-							aria-hidden="true"></i>
+						<span class="input-group-text icon"> <i
+							class="fa fa-venus-mars" aria-hidden="true"></i>
 						</span>
 					</div>
 					<select class="custom-select" th:field="*{sexo}"
-						style="max-width: 120px;">
+						style="max-width: 150px;">
 						<option th:each="sexo : ${listaSexo}" th:value="${sexo}"
 							th:text="${sexo.descricao}"></option>
 					</select>
@@ -98,8 +98,8 @@
 
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text icon"> <i class="fa fa-asterisk"
-							aria-hidden="true"></i>
+						<span class="input-group-text icon"> <i
+							class="fa fa-asterisk" aria-hidden="true"></i>
 					</div>
 					<input name="" class="form-control" placeholder="Nickname"
 						type="text" th:field="*{nickname}">

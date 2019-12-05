@@ -59,10 +59,10 @@ public class Data {
 	@Column(name="data_style")
 	private String style;
 	
-	@Column(name="data_code")
+	@Column(name="data_code", length = 500)
 	private String code;
 	
-	@Column(name="data_text", length = 400)
+	@Column(name="data_text", length = 800)
 	private String text;
 	
 	@OneToOne(fetch = FetchType.EAGER)
@@ -211,6 +211,5 @@ public class Data {
 	public void setBlock(Blocks block) {
 		this.block = block;
 	}
-	
 
 }

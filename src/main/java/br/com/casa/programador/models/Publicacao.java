@@ -10,9 +10,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.com.casa.programador.models.users.Publicador;
 
 @Entity
 @Table(name = "tbl_publicacao")
@@ -25,7 +29,7 @@ public class Publicacao {
 
 	@Column(name = "pub_time")
 	private String time;
-
+	
 	@Column(name = "pub_version")
 	private String version;
 
@@ -41,8 +45,19 @@ public class Publicacao {
 	@Column(name = "pub_nome")
 	private String nome;
 	
+	@Column(name = "pub_descricao")
+	private String descricao;
+	
 	@Column(name = "pub_json", length = 4000)
 	private String json;
+	
+	@OneToOne
+	@JoinColumn(name = "tem_id")
+	private Tema tema;
+	
+	@OneToOne
+	@JoinColumn(name = "pes_pessoa")
+	private Publicador publicador;
 	
 	public String getJson() {
 		return json;
@@ -106,6 +121,30 @@ public class Publicacao {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
+	public Publicador getPublicador() {
+		return publicador;
+	}
+
+	public void setPublicador(Publicador publicador) {
+		this.publicador = publicador;
 	}
 	
 }

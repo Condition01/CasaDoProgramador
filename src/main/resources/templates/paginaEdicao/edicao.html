@@ -13,7 +13,7 @@
 <link rel="stylesheet" th:href="@{/css/layoutBase.css}" />
 <link rel="stylesheet" th:href="@{/css/nav.css}" />
 <style type="text/css">
-.botaoSalvar {
+.botaoSalvar, .combo1 {
 	text-align: center;
 }
 
@@ -32,16 +32,15 @@
 		enctype="multipart/form-data" method="post">
 		<div
 			th:replace="paginaEdicao/editFragment/arquivosFragment :: arquivosFragment"></div>
-		<div class="ce-example">
 
-			<div id="header">
-				<h2 style="text-align: center;">Crie seu artigo aqui</h2>
-			</div>
-			<div id="editorjs"></div>
-			<div class="botaoSalvar">
-				<button type="submit" class="btn btn-dark btnSalvar"
-					onclick="salvar()">SalvarArtigo</button>
-			</div>
+		<div id="header">
+			<h2 style="text-align: center;">Crie seu artigo aqui</h2>
+		</div>
+		<div id="editorjs"></div>
+		<div class="botaoSalvar">
+			<button type="submit" class="btn btn-dark btnSalvar"
+				onclick="salvar()">SalvarArtigo</button>
+
 		</div>
 	</form>
 	<!-- Header -->

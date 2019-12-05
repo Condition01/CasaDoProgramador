@@ -151,6 +151,4 @@ public class Pessoa {
 		this.confirmaSenha = confirmaSenha;
 	}
 	
-	
-
 }

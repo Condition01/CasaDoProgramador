@@ -1,0 +1,81 @@
+@charset "ISO-8859-1";
+
+.pub-title{
+	color: black;
+}
+
+.body-text{
+	color: black;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
+.post-slider .next:hover, .post-slider .prev:hover{
+	color: white;
+}
+
+.page-wrapper a:hover{
+	text-decoration: none;
+	color: #602080;
+}
+
+.post-slider{
+	position: relative;
+}
+
+.post-slider .next{
+	position: absolute;
+	top: 55%;
+	right: 30px;
+	font-size: 2em;
+	cursor: pointer;
+	color: #602080;
+}
+
+.post-slider .prev{
+	position: absolute;
+	top: 55%;
+	left: 30px;
+	font-size: 2em;
+	cursor: pointer;
+	color: #602080;
+}
+
+.post-slider .slider-title{
+	text-align: center;
+	margin: 30px auto;
+}
+
+.post-slider .post-wrapper{
+	width: 84%;
+	height: 350px;
+	padding: 10px 0px 10px 10px;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+.post-slider .post-wrapper .post{
+	width: 230px;
+	height: 330px;
+	margin: 0px 12px;
+	background: white;
+	display: inline-block;
+	border-radius: 5px;
+}
+
+.post-slider .post-wrapper .post .slider-image{
+	margin-left: 15%;
+	width: 70%;
+	height: 200px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.post-slider .post-wrapper .post .post-info{
+	padding: 0px 5px;
+	height: 108px;
+	border: 1px solid gray;
+}
